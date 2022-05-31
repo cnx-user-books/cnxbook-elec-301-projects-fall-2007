@@ -1,0 +1,29 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Image Acquisition</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>73ec659a-598a-4c51-9a01-65920523b9e9</md:uuid>
+</metadata>
+  <content>
+    <section id="id-573823689894">
+      <title>Image Acquisition</title>
+      <section id="id-782153786484">
+        <title>The Optical-Fiber System</title>
+        <para id="id3226167">We have designed an optical system to test the imaging capabilities of a one millimeter diameter optical fiber probe. We used a 455 nm Luxeon LED (Philips, San Jose, CA) as the illumination source in accordance with our design goal of a device capable of both reflectance and fluorescence imaging while remaining as simple as possible. A broadband light source would be more ideal for reflectance imaging. However, a broadband light source could perform fluorescence imaging whereas our source would be suitable for both fluorescence and reflectance imaging. The LED was cooled by a heat sink and fan assembly mounted on its back and powered by a 12V AC/DC adaptor. To mimic the fatty environment of the human breast, test images were taken from samples of chicken adipose tissue.</para>
+        <figure id="id3251541">
+          <media id="idp4852128" alt=""><image src="../../media/Source and cable.jpg" mime-type="image/jpeg" height="241" width="307"/></media>
+        </figure>
+        <para id="id9014344">The 1-mm diameter fiber (Sumitomo Electric USA, Los Angeles, CA) was positioned next to the LED and over a vertically adjustable sample stage. (Figure 2) The fiber tip was adjusted to receive maximum illumination from the LED when it was in contact with the sample. The fiber collected the light reflected by the sample at its distal end and conveyed it to its proximal end. The proximal end of the fiber was focused at the focal plane of an infinity corrected microscope objective (Newport, Irvine, CA). The position of the fiber was adjusted by a three-axis micro translation stage (Newport). The infinity corrected object could project an image from its rear that is in focus regardless of the distance between the object and the detector.</para>
+        <figure id="id11086583">
+          <media id="idm1479712" alt=""><image src="../../media/Fiber(proximal)_stage_obj.jpg" mime-type="image/jpeg" height="266" width="340"/></media>
+        </figure>
+        <para id="id9736410">The detector was a Zeiss MRc5 5.0 megapixels color CCD camera (Carl Zeiss, Thornwood, NY). The magnification of the image on the detector relative to the image on the proximal fiber tip was the ratio between the distance from the detector to the back of the objective and the distance from the front of the objective to the fiber proximal tip. The infinity corrected objective permitted a wide range of magnifications (a while range of allowable detector-objective separation) while maintaining the focus of the image. (Figure 3) This feature could potentially allow the incorporation of a movable detector that can change the magnification of the image on command.</para>
+        <figure id="id3542617">
+          <media id="idp530672" alt=""><image src="../../media/Obj and camera.jpg" mime-type="image/jpeg" height="266" width="340"/></media>
+        </figure>
+        <para id="id3629430">The image from the detector was captured onto a laptop computer (Lenovo, China) with the Zeiss AxioVision camera software. (Figure 4) The image was exported as a bitmap file. The bitmap file was subsequently processed in Matlab (Mathworks, Natick, MA). </para>
+        <figure id="id3234467">
+          <media id="idp3697248" alt=""><image src="../../media/Camera to computer.jpg" mime-type="image/jpeg" height="267" width="340"/></media>
+        </figure>
+      </section>
+    </section>
+  </content>
+</document>

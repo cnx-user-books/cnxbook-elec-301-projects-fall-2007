@@ -1,0 +1,30 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Background</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>4825b39d-0131-4b75-bcc4-64793f529480</md:uuid>
+</metadata>
+  <content>
+    <section id="id-0368451763105">
+      <title>Synthetic Aperture Radar: Background</title>
+      <section id="id-0911378810329">
+        <title>What is Synthetic Aperture Radar?</title>
+        <para id="id48582263">Synthetic Aperture Radar (SAR) is a microwave imaging system that is used to obtain high resolution pictures of large areas of terrain. The radar can be either airborne or spaceborne. As the platform moves, closely spaced pulses are transmitted and the reflected signals are received and processed using Fourier methods. The processed data resembles data taken with a system that has a very large antenna, thus allowing extremely high resolution. </para>
+        <para id="id48445764">Synthetic Aperture Radar was first developed in the early 1950’s. The earliest type of SAR is called strip-mapping mode SAR. It is primarily used for imaging large areas of terrain, such as the surface of a nearby planet. This mode emits the radar pulses at a constant “look” angle to the surface while traveling along a flight path or orbit. This process creates a strip of mapped ground, and can be repeated along a polar orbit to map the entire surface of a planet. </para>
+        <para id="id42966585">Spotlight mode SAR is a newer form of SAR and was developed in the early 1980’s. It is more widely used today than strip-mapping mode and it is what our project deals with. In spotlight mode, the radar is steered continually as the carrier of the radar flies over a patch of ground. In another word, the “look” angle is constantly adjusted so that a single patch of ground is always illuminated. This method allows for higher resolution in the azimuth “travel” direction of the platform but is not able to image as large of an area as strip-mapping mode. </para>
+      </section>
+      <section id="id-685049569205">
+        <title>How Does Imaging Radar Work?</title>
+        <para id="id49388314">As mentioned earlier, we use the Synthetic Aperture Radar processing technique because of its advantages when it comes to imaging large areas at high resolutions. However, why do we even use radar to image things in the first place?</para>
+        <para id="id45145660">Radar is used in imaging because of the minimal constraints that is has on time-of-day and atmospheric conditions. The area of imaging does not have to be illuminated by sunlight in order to obtain a picture. This allows for continuous mapping regardless of the position of the sun, which saves time and therefore, money.</para>
+        <para id="id43652097">Radar also has the ability to penetrate cloud cover because one can choose a wavelength that is not absorbed by water. This fact is what allowed scientists at NASA to provide stunning images of the surface of Venus, which is completely shrouded in cloud-cover. </para>
+        <para id="id46747567">Imaging radar works by emitting a signal and then recording the strength of the reflected signal (scattering coefficient) for that area. The pulses are emitted at an angle to the surface such that if they strike a smooth, flat surface, very little of the signal will be reflected back towards the antenna which corresponds to a darker spot on our scattering coefficient image. </para>
+        <para id="id47426843">When the radar pulse strikes uneven surfaces such as urban areas or vegetated areas, the signal gets reflected numerous times and there is an increased likelihood that the radar antenna will eventually receive a large portion of the signal back, corresponding to a whiter spot on your image. Scientists use this fact to determine the extent of flooding in urban areas or to discern how much an oil spill in the ocean has grown.</para>
+      </section>
+      <section id="id-0604964227009">
+        <title>Synthetic Aperture Radar and Microwave Imaging System</title>
+        <para id="id46134162">The resolution of an image taken from an imaging system is usually determined by the size of the Aperture (lens for optical systems and antenna for radar). Conventional radar systems use passive methods deployed with optical or short-wave infrared sector that rely on sunlight reflection. On the other hand, synthetic Aperture Radar uses a microwave imaging system. Two important advantages resulting from using microwave pulses are that cloud cover can be penetrated and the imaging process can be performed at night. </para>
+        <para id="id43319070">However, antenna size limits one from applying microwave imaging systems. A very large size of antenna is required to obtain satisfactory resolution. Therefore, the size of the antenna makes it impractical for the radar carrier. </para>
+        <para id="id45559224">Synthetic Aperture Radar solves the problem by “simulating” a large Aperture. The radar sends and receives signals from a relatively small antenna while the platform traveling along a flight path. One can then use the digital signal processing techniques to combine the data into a coherent image. The result is the same as if one has used a very large antenna.</para>
+      </section>
+    </section>
+  </content>
+</document>

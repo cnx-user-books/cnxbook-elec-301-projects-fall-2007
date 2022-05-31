@@ -1,0 +1,26 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Future Work for the Virtual Drum Kit</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>56bd2d63-1813-4edb-90e1-b8805ac27caa</md:uuid>
+</metadata>
+  <content>
+    <section id="id-339334529635">
+      <title>Conclusion</title>
+      <para id="id6166466">While the virtual drum kit is not advanced enough to replace a real drum kit for a professional drummer, it is an enjoyable alternative for anyone aspiring to learn how to play the drums or amateur music enthusiasts looking for an affordable solution. </para>
+      <para id="id6096123">Further improvements in our implementation could lead to a drum kit  that is almost as good as a real drum kit. </para>
+      <section id="id-0737620041466">
+        <title>Room for Improvement</title>
+        <list list-type="bulleted" id="id7051112">
+          <item>Addition of the bass drum, hi hat, ride cymbals for a fuller drum kit. </item>
+          <item>Incorporation of a change in volume based on the acceleration with which drums are hit. </item>
+          <item>Higher frame rate and more powerful machines to overcome the delay and visual latency. </item>
+          <item>Adding customizability to allow the user to modify the positions of the drums, and the sounds that are played.</item>
+        </list>
+      </section>
+    </section>
+    <section id="id-377048014996">
+      <title>Future Work</title>
+      <para id="id7022932">The concept of LED tracking forms the base of many useful implementations. More specifically, our Matlab code can be easily modified to implement a virtual whiteboard or any other percussion instrument.</para>
+      <para id="id6175310">With a sense of adventure and some degree of technological innovation and creativity, virtual musical instruments can replace expensive physical musical instruments while delivering comparable results. </para>
+    </section>
+  </content>
+</document>

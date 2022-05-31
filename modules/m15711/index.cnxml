@@ -1,0 +1,30 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Results of the Virtual Drum Kit</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>3a0862dc-8068-43bf-891e-8e8c143f0aae</md:uuid>
+</metadata>
+  <content>
+    <section id="id-924729883697">
+      <title>Results</title>
+      <para id="id3461728">While there are many ways to approach the virtual drum kit, we are pleased with the outcome of our implementation using one webcam and velocity computation. We found that users enjoyed the drum kit more after familiarizing themselves with the set-up. </para>
+      <section id="id-750756155045">
+        <title>Advantages</title>
+        <list list-type="bulleted" id="id3519501">
+          <item>High precision in detecting where the drums are hit. Our results showed that less than two hits were missed in a minute’s worth of playing. </item>
+          <item>Affordable solution for drumming enthusiasts.</item>
+          <item>Easily Transportable. </item>
+          <item>Runs in real time without a significant delay with Matlab set to high priority.</item>
+          <item>Easy to modify the Matlab code to make the system customizable. </item>
+          <item>Animated interface gives a visual representation of drums as feedback hit instead of just bare audio. </item>
+          <item>Absence of physical drums makes the drummer visible to the audience.</item>
+        </list>
+      </section>
+      <section id="id-694456925212">
+        <title>Limitations</title>
+        <list list-type="bulleted" id="id3459390">
+          <item>Slight delay due to processing power of the computer.</item>
+          <item>Requires a dimly lit area for easy LED detection.</item>
+        </list>
+      </section>
+    </section>
+  </content>
+</document>

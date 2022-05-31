@@ -1,0 +1,9 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Introduction</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>6e88a2dd-386c-402f-9d0e-afafc0b19f7b</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">This series of modules describes the design, implementation, and analysis of a real-time laugh track removal system. We first give an analysis of the characteristics of a laugh track in both the frequency and time domain, as can be found in the module <link document="m15644">Anatomy of a Laugh Track</link>. We then discuss methods for detecting laugh tracks. The primary method can be found in the module <link document="m15642">Primary Detection Methods for Laugh Tracks</link>. Another method with which we experimented can be found in the module <link document="m15637">Secondary Detection Methods for Laugh Tracks</link>. We conclude with a discussion of the implementation of the real-time component. This can be found in the module <link document="m15641">DirectShow Filter Design for Laugh Track Removal</link>. A summary can be found in the <link document="m15643">Conclusion</link></para>   
+  </content>
+  
+</document>

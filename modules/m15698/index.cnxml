@@ -1,0 +1,21 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Introduction to the Virtual Drum Kit</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>127527ab-b050-4e5f-afdc-b4956e3b4bb2</md:uuid>
+</metadata>
+  <content>
+    <para id="id6714557"><emphasis>Imagine This:</emphasis></para>
+    <para id="id7317614">Having your own invisible and portable drum kit that not only takes up far less space, but also costs ten times less than a real one. With virtual reality no longer a distant dream and technology headed towards its implementation in all applications, a virtual interface for musical instruments is inevitable. This is the focus of “Tap That” – creating a cost-effective, compact and enjoyable drumming experience by means of a virtual drum kit.</para>
+    <section id="id-419052913308">
+      <title>Past Work</title>
+      <para id="id4881205">The first virtual drum kit was created by a French group (<link url="http://www.virtual-drums.com/">www.virtual-drums.com</link>). Their implementation uses two webcams for 3D spatial analysis and extensive C++ coding. There are several other virtual drum kits available on the internet, but they must be controlled with either a mouse or a keyboard, which detracts from the drumming experience. The drum kits developed by the French group and our group give the user a real feeling of playing the drums while actually being virtual. </para>
+    </section>
+    <section id="id-660021249141">
+      <title>Our Goal</title>
+      <para id="id4149589">This project aims at creating an affordable virtual drum kit for amateur drummers using readily available materials. Music enthusiasts can “Tap That” with this cost-effective replacement of a real drum kit. This instrument requires a web camera, Matlab 6.0 or higher, two LED lights (mounted on drumsticks for a more authentic experience) and a computer. </para>
+    </section>
+    <section id="id-603196324">
+      <title>Summary</title>
+      <para id="id3275440">This project is based on a 2-dimensional tracking system. It tracks the LEDs in two dimensions and uses velocity computations to determine when and where the drum was hit. The user positions himself or herself on a chair in front of the webcam and runs the program. An animated image on the screen gives the user the approximate positions of the drums. As the user moves the LEDs in the air, pretending to hit real drums, Matlab calculates the position of the LEDs by carrying out a frame-by-frame analysis of the video in real-time. The velocities of the LEDs are calculated, and when the LED starts moving upwards instead of downwards, it means that a drum has been hit. Based on the position of the strike, the corresponding drum’s sound will be produced while the animation gives the user feedback about which drum they hit. </para>
+    </section>
+  </content>
+</document>

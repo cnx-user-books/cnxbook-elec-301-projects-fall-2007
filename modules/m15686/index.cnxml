@@ -1,0 +1,18 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Introduction</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0279d72f-a2de-4b53-a463-2702926b700f</md:uuid>
+</metadata>
+  <content>
+    <section id="id-438842422182">
+      <title>Introduction</title>
+      <section id="id-875074954875">
+        <title>Abstract</title>
+        <para id="id4227676">The nuclear-cytoplasmic ratio (NCR) is a widely used clinical indicator for cancer. The automated extraction of cell size and nuclear size from tissue images is the only practical method to assess quantitatively the NCR in a real-time clinical setting. In this study we demonstrate the feasibility of automatically detecting the cell boundaries and estimating the cell sizes from images of chicken adipose tissue using several image processing techniques and an implementation of the Hough Transform.</para>
+      </section>
+      <section id="id-142523644976">
+        <title>Goals</title>
+        <para id="id8375763">Using a completely non-invasive image capturing technique, we want to be able to automate a process to detect the cells in the image, as well as calculate the area of the cells. By doing this, when imaging techniques become more advanced, the process can be used to determine the NCR and thus, become an automated, non-invasive indicator of the presence of cancer.</para>
+      </section>
+    </section>
+  </content>
+</document>

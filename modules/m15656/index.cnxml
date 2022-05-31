@@ -1,0 +1,17 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>MATLAB EQ: Results</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>fdbca687-8ba4-421b-8e2c-ecd61c3e3c1d</md:uuid>
+</metadata>
+  <content>
+    <section id="id-443244388029">
+      <title>Results</title>
+      <figure id="id5956453">
+        <media id="idp4235168" alt=""><image src="../../media/graphics1-dcd6.jpg" mime-type="image/jpeg" height="453" width="600"/></media>
+      </figure>
+      <para id="id6501400">The above figure is a demonstration of the end result of our Visual Equalizer. </para>
+      <para id="id5391980">As shown, we were able to implement a real-time spectrum analysis of the signal in dual-channel (stereo) mode, with the preprocessed signal on the left and the post-processed signal on the right. The graphs on the bottom represent the 10 binned frequency blocks in a logarithmic queue up to 22.05 KHz.</para>
+      <para id="id6490828">Each frequency block can be adjusted to modify the gain levels. The Distortion, Flange, and Reverb options implement each command in the left channel, right channel, or dual-channel modes. The Volume control is the Unity Gain, increasing the amplitude over all the frequency blocks. The Start and Stop buttons begin or end the visual spectrum processing.</para>
+      <para id="id6518845">As a bonus, we threw in audio presets such as Rock, Treble Booster, Bass Booster, etc.</para>
+    </section>
+  </content>
+</document>

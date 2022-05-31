@@ -1,0 +1,19 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Blind Source Separation Via ICA: Conclusion</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>126effe3-1e8d-4155-b947-4e83abb322ef</md:uuid>
+</metadata>
+  <content>
+    <section id="id-177682783423">
+      <title>Conclusions and Opportunities for Further Study</title>
+      <section id="id-11374344247">
+        <title>Conclusions</title>
+        <para id="id3485033">Our implementation of blind source separation using the FastICA algorithm led us to overall successful results. We were reliably able to record two independent sound signals, digitally mix them to create mixtures, and then recover the original signals using ICA. Hardware deficiencies and phase effects between inputs disallowed us to do more real-time processing (where two microphone signals would simultaneously be recorded); however, this also helped us understand the shortcomings of the ICA algorithm. As effective as the ICA algorithm was under the right conditions, it could not work with nonlinear mixtures.</para>
+      </section>
+      <section id="id-236482139655">
+        <title>Opportunities for Further Study</title>
+        <para id="id5844410">Blind source separation, and ICA in particular, are currently cutting-edge fields of research and development in the signal processing world, so opportunities for further study abound. Every member of our group was fascinated by the real-world applications of ICA, especially those applications related to medical imaging. Within medical imaging, a great deal of research needs to be done on the most effective way to capture signals from the body so that ICA can return signals useful to the medical world. Outside of the medical imaging realm, applications of ICA like CDMA communication and image processing are still in their infancy, and a great deal of research could be done to understand and improve these applications. And of course, finding new applications of the ICA algorithm would be very interesting research.</para>
+        <para id="id7514180">Another opportunity for further study would be in finding ways to identify each of the resulting independent components. For example, in applications where ICA is used to remove interference and background noise, an important problem is that of determining which component is the desired original signal and which component represents noise.</para>
+      </section>
+    </section>
+  </content>
+</document>

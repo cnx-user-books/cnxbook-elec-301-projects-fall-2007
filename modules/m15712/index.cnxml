@@ -1,0 +1,40 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Blind Source Separation Via ICA: Audio Demonstration</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>5c864b0b-145f-4d33-a55d-0353184ecf95</md:uuid>
+</metadata>
+  <content>
+    <section id="id-89703552754">
+      <title>Audio Demonstration</title>
+      <para id="id3482944">The following signals are examples of audio files that we ran through our code. The two signals are linearly mixed, then run through <emphasis>Matlab</emphasis> code to recover the original signals.</para>
+      <section id="id-403266879169">
+        <title>Demonstration 1</title>
+        <para id="id2948592">This is an example of ICA being used to separate out individual voices from two people simultaneously talking. The first two are the linearly combined signals; the last two are the results of the ICA code.</para>
+        <para id="id3882383"><media id="idm13874256" alt=""><audio src="Mixed Signal 1A.wav" mime-type="audio/x-wav"/></media>
+
+        </para>
+        <para id="id3311023"><media id="idp894368" alt=""><audio src="Mixed Signal 1B.wav" mime-type="audio/x-wav"/></media>
+        </para>
+        <para id="id3929110"><media id="idm358960" alt=""><audio src="Recovered Signal 1A.wav" mime-type="audio/x-wav"/></media>
+        </para>
+        <para id="id7530429"><media id="idm3876816" alt=""><audio src="Recovered Signal 1B.wav" mime-type="audio/x-wav"/></media>
+        </para>
+        <para id="id3346307"/>
+      </section>
+      <section id="id-312376887552">
+        <title>Demonstration 2</title>
+        <para id="id3143404">This is an example of ICA being used to separate out individual songs that are playing at the same time. The first two are the linearly combined signals; the last two are the results of the ICA code.</para>
+        <para id="id6638086"><media id="idm4692272" alt=""><audio src="Mixed Signal 2A.wav" mime-type="audio/x-wav"/></media>
+        </para>
+        <para id="id3439619"><media id="idm505984" alt=""><audio src="Mixed Signal 2B.wav" mime-type="audio/x-wav"/></media>
+        </para>
+        <para id="id4576882"><media id="idp5850272" alt=""><audio src="Recovered Signal 2A.wav" mime-type="audio/x-wav"/></media>
+        </para>
+        <para id="id4513227"><media id="idp3412752" alt=""><audio src="Recovered Signal 2B.wav" mime-type="audio/x-wav"/></media>
+        </para>
+        <para id="id4379609">
+          <code/>
+        </para>
+      </section>
+    </section>
+  </content>
+</document>

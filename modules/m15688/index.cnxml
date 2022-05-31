@@ -1,0 +1,24 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Defining Borders</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>e736d2d9-aaee-437f-8b9d-f1bfaa607be7</md:uuid>
+</metadata>
+  <content>
+    <section id="id-559662714431">
+      <title>Defining Borders</title>
+      <section id="id-141262144725">
+        <title>Overview</title>
+        <para id="id6004851">With the original cell picture, as shown below, it is very difficult to make out the cell borders due to the lack of contrast between the borders and the background of the image. Our first goal, before edge detection can even be done, is to create a sharper contrast between the borders and the background. This is shown in Figure 1. </para>
+        <figure id="id6595000">
+          <media id="idp8563120" alt=""><image src="../../media/reflectance_455nm LED_adipose cells.png" mime-type="image/png" height="214" width="297"/></media>
+        </figure>
+      </section>
+      <section id="id-675603430905">
+        <title>Thresholding</title>
+        <para id="id6987381">In order to create a higher contrast between a cell’s borders and the background, thresholding was utilized. Pixels of lower intensities, the background, were thrown out while pixels of higher intensities were kept. The IMADJUST command in Matlab allowed us to specify a threshold intensity and mapped all pixels below the threshold to zero. The result can be seen in Figure 2. </para>
+        <figure id="id4727314">
+          <media id="idp4748960" alt=""><image src="../../media/threshold_image.jpg" mime-type="image/jpeg" height="253" width="356"/></media>
+        </figure>
+      </section>
+    </section>
+  </content>
+</document>

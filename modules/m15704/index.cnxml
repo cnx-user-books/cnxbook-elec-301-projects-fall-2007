@@ -1,0 +1,22 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Implementation: Code</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>6348fd7e-e2bc-406f-9b31-82483ae5c7b1</md:uuid>
+</metadata>
+  <content>
+    <para id="id10996534">To get a better understanding for how we implemented the drum kit, you might want to have a look at our Matlab code.</para>
+    <para id="id4616992">The code is available at: http://www.geocities.com/tapthat_virtualdrum/tapthat.html</para>
+    <section id="id-912969917185">
+      <title>Essential Files:</title>
+      <para id="id8766950">proj_301.m- This is a wrapper function to set up video acquisition and collect frames from the camera. </para>
+      <para id="id10264391">detectcolor.m- This function checks for presence of the LED.</para>
+      <para id="id9578504">coord.m- This function finds the position of the LED in each frame, computes its velocity and hit-point.</para>
+      <para id="id9413354">drumdet.m- This function determines which drum was hit.</para>
+      <para id="id9506394">drumdisp.m- It produces the sound and displays the image corresponding to the drum that was hit.</para>
+    </section>
+    <section id="id-48075442919">
+      <title>Files for debugging and setting up the system:</title>
+      <para id="id11317367">adjust.m- This is mainly for the user’s convenience. It helps adjust the position of the user with respect to the drums.</para>
+      <para id="id11857787">checkframe.m- This can be used to verify that the color detection works properly for a particular frame.</para>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,29 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Producing Drum Sounds and Displaying the Drum</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>77d4491b-fcfc-45cd-a77c-d3920e416a9c</md:uuid>
+</metadata>
+  <content>
+    <section id="id-13913816962">
+      <title>Producing Drum Sounds and Displaying the Drum</title>
+      <para id="id48047517">Once we have determined which drum has been hit, we play the appropriate sound and display the corresponding image. The drum sounds and images are preloaded in separate .mat files at the beginning of the program using the load command to expedite execution.</para>
+      <para id="id48047528">
+        <code>load drumsounds</code>
+      </para>
+      <para id="id48047536">
+        <code>load drumpics</code>
+      </para>
+      <section id="id-568198782037">
+        <title>Drum Sounds:</title>
+        <para id="id48047550"><code>drumpics.mat</code> was created by importing drum samples in the wav format using <code>wavread()</code> and <code>wavadd()</code>. <code>wavread(‘wavfile’)</code> is a Matlab function that stores wav files as an Nx2 matrix. <code>wavadd(sound1,sound2)</code> is a function that we created to allow the simultaneous play of two different sounds. For example, if both the snare and the crash cymbal were hit at the same time, we zero pad the shorter matrix and combine them as one sound matrix. In the main program, the Matlab function <code>soundsc(sound, fs)</code> plays the corresponding sound file, where ‘fs’ is the sampling rate. Our wav files were sampled at 22 kHz to allow for smaller sound variables without affecting the sound quality too much. All of our drum samples were obtained free online from a Yamaha 9000 drum kit. </para>
+      </section>
+      <section id="id-739226867771">
+        <title>Drum Pictures:</title>
+        <para id="id48047619"><code>drumsounds.mat</code> was created by importing jpeg files using the <code>imread() </code>Matlab command to store the images as variables. The images were created from Google SketchUp, a free 3D modeling program available online. Different views were created to simulate the feel of animation.</para>
+        <figure id="id48047646"><media id="idp13395760" alt=""><image src="../../media/graphics1-e63e.jpg" mime-type="image/jpeg" height="144" width="262"/></media>
+        <caption>Main view</caption></figure>
+        <figure id="id48045453"><media id="idp13453920" alt=""><image src="../../media/graphics2-b556.jpg" mime-type="image/jpeg" height="135" width="248"/></media>
+        <caption>Crash cymbal and snare were hit</caption></figure>
+      </section>
+    </section>
+  </content>
+</document>

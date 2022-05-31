@@ -1,0 +1,22 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Edge Detection</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>be270557-38d7-46f3-89e9-c577be8d3295</md:uuid>
+</metadata>
+  <content>
+    <section id="id-111394406454">
+      <title>Edge Detection</title>
+      <section id="id-475344201355">
+        <title>Canny Edge Detector</title>
+        <para id="id48717530">We use the Canny Edge Detector to (hopefully) obtain sharp edges for our image now that we have “blurred” together the dots which form the cell edges. The Canny edge detector first takes a gradient of the image. A gradient magnitude, as well as the edge direction (which way the gradient is increasing) can then be found. The Canny edge detector does this by using four different filters which can detect horizontal, vertical and diagonal edges. For each pixel, the filter which outputs the largest response can be found and the direction determined. </para>
+      </section>
+      <section id="id-0439519168118">
+        <title>Distance Matrix</title>
+        <para id="id48462493">Once we have run our image through the Canny edge detector, a distance filter is used to connect all remaining lines in a cell’s border. The distance function calculates the Euclidean distance between each pixel and the nearest pixel which is on. The output of the distance function is a matrix having the same dimensions as the image matrix. The entries correspond to the distances; for example, if pixel (i,j) was a distance x away from the nearest on pixel, the (i,j) entry in the distance matrix will be x. </para>
+        <para id="id47967564">After the distance matrix is found, an iterative method is used to go through each entry of the matrix. A threshold distance is determined and every entry of the distance matrix which falls under the threshold is mapped to one, and every entry which falls above is mapped to zero. What exactly is this doing? Well, if a pixel is close enough to an on pixel, then we assume it is part of the cell’s border, and thus must be turned on as well. The distance function and subsequent thresholding is performed multiple times, with the threshold getting small and small each time until the cell borders are completely continuous. The result is shown below.</para>
+        <figure id="id48950502">
+          <media id="idp3280992" alt=""><image src="../../media/Continuous_Line_Picture.jpg" mime-type="image/jpeg" height="224" width="314"/></media>
+        </figure>
+      </section>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,19 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Conclusions and Future Work</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>1423b5f3-c293-409d-9b78-246a79957ada</md:uuid>
+</metadata>
+  <content>
+    <section id="id-655475892204">
+      <title>Conclusions</title>
+      <para id="id10079172">Our project shows that an image can be extracted from scattering coefficients obtained from SAR techniques. One need only apply some digital signal processing techniques, such as the polar to Cartesian interpolation of our data. SAR has many benefits and real world applications. For example, the microwave radiation used in SAR penetrates cloud cover. This fact has been used to image Venus’ surface, providing stunning visuals otherwise unavailable. Another benefit is that SAR does not require the construction of a large antenna as the motion of the detector creates an artificial aperture.</para>
+    </section>
+    <section id="id-277292409026">
+      <title>Future Work</title>
+      <para id="id11304767">One negative aspect of our data is that the range of frequencies represented is very narrow. That is, the interpolated grid we chose focuses on a small range of frequencies relative to the amount of data that we received to work with. One potential fix for this is to do multiple interpolations of multiple Cartesian grids, ensuring no overlap, and superimpose the images that result. As long as the relative location of the grids is taken into account, then by linearity, we should be able to acquire a more detailed image by superimposing the images. One might imagine, for example, that we could superimpose the grids shown below.</para>
+      <figure id="id3449191">
+        <media id="idp1449136" alt=""><image src="../../media/graphics1-decc.png" mime-type="image/png" height="605" width="612"/></media>
+      </figure>
+      <para id="id4304250">Another possibility is to forego the interpolation, which restricts the amount of data that we can use, and instead we can work in polar coordinates. This would allow us to use all of our data, cutting out nothing. The downside to this is that there is no fast Fourier transform method for polar coordinates, so the computational complexity increases the run time to be on the order of hours.</para>
+    </section>
+  </content>
+</document>

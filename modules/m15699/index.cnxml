@@ -1,0 +1,41 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Implementation: Detecting the LEDs</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>f125a8eb-5e39-4d0d-a478-cb08c63ac480</md:uuid>
+</metadata>
+  <content>
+    <section id="id-484766724921">
+      <title>RGB in Each Individual Frame</title>
+      <para id="id7674728">Given the acquired frames, the first step is to locate the LEDs. The color of the LEDs can be described by the intensity of red, green and blue. These are represented by values between 0 and 255 (going from null intensity to full intensity) in the RGB matrices for each image. We can detect the LEDs by setting threshold values for Red, Green and Blue. For example, to find the Red LED, you are looking for the part of the frame with high Red values and low Blue and Green values. We would recommend using the data cursor to analyze RGB values of the LED in the colormap. Play around with threshold values until you get the right thresholds, i.e., only the LED you are trying to detect shows up.</para>
+      <figure id="id4095038"><title>A Sample Frame</title>
+        <media id="idp19587536" alt=""><image src="../../media/graphics1-5bc8.jpg" mime-type="image/jpeg" height="393" width="361"/></media>
+      </figure>
+      <para id="id7674832">
+        <figure id="id7674835"><title>Spy Plots of the LEDs</title>
+  <subfigure id="subfig1">
+    <media id="idp7046944" alt=""><image src="../../media/graphics2-e455.jpg" mime-type="image/jpeg" height="348" width="309"/></media>
+<caption>Red LED</caption>
+  </subfigure>
+  <subfigure id="subfig2">
+          <media id="idp15678096" alt=""><image src="../../media/graphics3-623a.jpg" mime-type="image/jpeg" height="348" width="343"/></media>
+<caption>Green LED</caption>
+  </subfigure>
+          
+        </figure>
+        
+      </para>
+      <para id="id7541807">In our project, we used the find function to look at the red, green and blue matrices separately and set ones wherever the conditions were satisfied. We multiply the three matrices of ones and zeros to produce one final matrix with ones where all three color thresholds are satisfied and the LED is detected.</para>
+    </section>
+    <section id="id-417344304157">
+      <title>Turn Off the LEDs</title>
+      <para id="id7541823">If the LEDs are not detected for 75% of the frames, it means that the LEDs are either turned off or not in the frame at all, and the program stops running. However, if the LEDs have been found, you can move on to detecting when the drums are hit.</para>
+      
+      
+      
+      
+      
+      
+      
+      
+    </section>
+  </content>
+</document>

@@ -1,0 +1,33 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Anatomy of a Laugh Track</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a7ec0ec7-9093-4f55-93ef-3ac2ce71b1c8</md:uuid>
+</metadata>
+  <content>
+<section id="intro">
+  <title>Introduction</title> 
+ <para id="element-801">
+ A laugh track is a commonly heard part of sitcoms and other comedy shows found on television since the early 1950s. A laugh track can be defined as a prerecorded superposition of samples of people laughing mixed into a television show to "enhance" it. A single laugh track can be composed of a variety of male laughter and female laughter. Often individual, distinct laughs are added in at the end to make laugh tracks sound like the laughter of a live audience instead of simply something generated from prerecorded samples. All of this makes it very difficult to detect a laugh track based on relatively simple heuristics.
+</para>
+</section>
+<section id="freq_anal">
+<title>Frequency Analysis</title>
+<para id="element-113">Looking at the Discrete Fourier Transforms of a laugh track(Fig. 1) and a two minute sample of a television show(Fig. 2), we notice some characteristics of the laugh track such as the slightly larger spike in one of the mid-range frequencies, which is difficult to detect, there is not much difference in the spectrum in the two signals. The spikes we see are also not characteristic of every laugh track, so it would be difficult to create a method of detecting laugh tracks solely by looking in the frequency domain. Factoring in variability such as the dominance of male or female voices in the individual laugh track as well as varying lengths and intensities of a laugh, the problem becomes even more difficult when attempting detection using DFTs and a bandpass filtering scheme.</para><figure id="element-724"><title>TV Show Sample</title>
+ <media id="idm12729888" alt=""><image src="../../media/short.png" mime-type="image/png" height="240" width="600"/></media>
+</figure><figure id="element-439"><title>Laugh Track Sample</title>
+ <media id="idm9574704" alt=""><image src="../../media/laugh.png" mime-type="image/png" height="240" width="600"/></media>
+</figure>
+</section>
+<section id="time_anal">
+<title>Time Analysis</title>
+<para id="element-136">It is much easier to look for a laugh track in the time domain because the envelope that is characteristic of a laugh track as can be seen in the figure below is much more prominent than the spikes that we see in the DFT of the two signals. This envelope follows the magnitude of a normal laugh track. After a joke, people abruptly start laughing and then the laughter slowly dies down. This is found to be the case in almost every single laugh track instance found in the TV shows that we looked at. Even if a laugh track is short, we can see the same envelope, just compressed more so than in the example. If a laugh track is quieter or louder, we will still be able to see the envelope, though this makes detection based on height thresholds more difficult as regular speech may look very similar to our envelope when a laugh track is shorter and quieter.</para><figure id="element-312"><title>Laugh Track in the Time Domain</title>
+
+ <media id="idm12483680" alt=""><image src="../../media/laughtrack-time_domain.png" mime-type="image/png" height="200" width="540"/></media>
+ <caption>A laugh track in the time domain, with the characteristic envelope drawn in red on the original waveform.</caption></figure>
+</section>
+<section id="conclusions">
+<title>Conclusion</title>
+<para id="element-428">Other approaches at detecting laugh tracks were also considered, but envelope detection in the time domain proved to be the most effective manner of detecting laugh tracks. Matched filtering and looking for distinctive characteristics in the frequency domain proved to be fruitless. The envelope in the figure above is quite distinctive and relatively easy to detect, even with a fairly simple algorithm, so this approach was used in our detection and removal scheme.</para>   
+</section>
+  </content>
+  
+</document>

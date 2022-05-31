@@ -1,0 +1,72 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Inverse Filter</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>e865cbf1-9dc7-4f2a-aa6d-5824a0473d04</md:uuid>
+</metadata>
+  <content>
+
+      <para id="id3805002">We observed that the system did not transmit sound information perfectly, and transmitted speech signals suffered some distortion. This distortion happens for two reasons: (1) the physical properties of the glass cause it to respond differently to different frequencies, and (2) low-frequency vibrations caused by air-conditioning systems and other building vibrations are constantly present in the window. We attempted to compensate for this observed distortion by building an inverse filter. We accomplished this in three steps:</para>
+     
+    
+<section id="idm2602176">
+      <title>Step 1: Measure the Frequency Response</title>
+
+
+      <para id="id9568669">In order to accurately model the system, we needed to measure its frequency response. We blasted a 30-second sound clip of pure white noise at the window and recorded the signal measured by the detection unit. Since we knew the input of the system (the white noise) had a completely flat spectrum, the output’s spectrum should represent the frequency response. To compute the spectrum of the output (the recorded signal), we windowed portions of the signal using a Hamming window, computed the FFT’s of each windowed portion, and then averaged the FFT’s. This average FFT represents the frequency response of our system.</para>
+      <figure id="id5593226">
+        <media id="idm4589632" alt=""><image src="../../media/Hamming Window Plot.png" mime-type="image/png" height="438" width="583"/></media>
+      </figure>
+      <figure id="id8718442">
+        <media id="idp6755984" alt=""><image src="../../media/graphics1-e127.png" mime-type="image/png" height="235" width="580"/></media>
+      </figure>
+
+
+      <para id="id9534971">The plot shows some strong low-frequency vibrations in the window. We attributed these to the air-conditioning unit in the building and to other random vibrations in the environment. We also noticed that the window responded better to low frequencies than to high frequencies. This could be a result of the physical properties of the glass as well as the physical dimensions of the window.</para>
+</section>
+
+
+<section id="idm1345024">
+<title>Step 2: Model the System</title>
+      <para id="id7039474">Once we had a good idea of the system’s frequency response, we attempted to model the system using a linear prediction filter. We used a linear prediction filter because it made the inverse filter simple to implement, and it guaranteed that the inverse filter would be inherently stable and have a linear phase response. A linear prediction filter estimates its next output by the current input and a linear combination of n previous outputs:</para>
+
+
+      <figure id="idp632512">
+        <media id="idp273184" alt=""><image src="../../media/Equation 1.png" mime-type="image/png"/></media>
+      </figure>
+
+
+      <para id="id9918742">The first step to building this filter is to compute the autocorrelation coefficients of the recorded signal. The autocorrelation coefficients are a measure of the correlation between samples of the signal. Since the filter must accurately estimate the output based on previous outputs, it must preserve the correlation between samples. One autocorrelation coefficient r[i] can be expressed as:</para>
+
+
+        <figure id="idp2687824">
+        <media id="idp3040240" alt=""><image src="../../media/Equation 2.png" mime-type="image/png"/></media>
+      </figure>
+
+
+
+      <para id="id10634726">The next step to building the filter was to compute the filter coefficients. We used a recursive algorithm called Burden’s Algorithm to do this. We set the first coefficient a[0] = 1 and then compute the other coefficients recursively:</para>
+
+
+        <figure id="idp7288192">
+        <media id="idp2100208" alt=""><image src="../../media/Equation 3.png" mime-type="image/png"/></media>
+      </figure>
+
+
+
+      <para id="id9522710">We could perform this recursion as many times as we needed to compute the desired amount of coefficients. We wrote a MATLAB program to perform the algorithm N times on the windowed signal to generate N coefficients. We used these coefficients in the feedback branches of the filter. We found that we could accurately model the system using a linear prediction filter with 50 coefficients. The frequency response of this filter has a similar shape to the measured frequency response of the system:</para>
+      <figure id="id8519518">
+        <media id="idp3202032" alt=""><image src="../../media/graphics2-56b7.png" mime-type="image/png" height="224" width="571"/></media>
+      </figure>
+
+</section>
+
+      <para id="id8263910">Step 3: Build the Inverse Filter</para>
+<section id="idp2856864">
+<title>Step 3: Build the Inverse Filter</title>
+      <para id="id6413272">The linear prediction filter is simple to invert. Since it uses only the previous outputs to generate the next output, it is an all-pole filter with only feedback branches. To build the inverse filter, we used all the feedback coefficients that we generated using Burden’s Algorithm as the feed-forward coefficients of the inverse filter. The frequency response of the inverse filter looks like:</para>
+      <figure id="id9734170">
+        <media id="idp685152" alt=""><image src="../../media/Inverse Filter Frequency Response.png" mime-type="image/png" height="438" width="583"/></media>
+      </figure>
+      <para id="id9961662">We observed that the inverse filter accurately inverted the response of the system. It successfully attenuated the low-frequency window vibrations, and it amplified the higher frequencies that the system attenuated.</para>
+</section>
+  </content>
+</document>

@@ -1,0 +1,47 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>MATLAB EQ: Background on Equalization</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>905fc01b-745c-4604-94ce-447132a1cc82</md:uuid>
+</metadata>
+  <content>
+    <section id="id-456301499608">
+      <title>Introduction to Equalizers</title>
+      <para id="id6559842">This section will cover the basic principles that we used in the creation of our graphical equalizer: equalizer principles, analog to digital conversion, Nyquist-Shannon sampling Theory, and the fast Fourier transform.</para>
+      <section id="id-556629124673">
+        <title>Equalizers</title>
+        <para id="id6680709">In audio processing, equalization is the process of changing the spectrum of a sound. Equalizers employ low-pass, band-pass, and high-pass filters to modify different portions of a sound’s spectrum. By changing the gains on these filters an operator is able to modify the sound. An easy example to understand would be a ‘Bass Booster,’ where the user adds gain to the low frequencies and thereby increases the ‘bass’ of a song. Generally, equalizers have ten different bands that a person is able to manipulate, but high end models can have up to thirty-one.</para>
+      </section>
+      <section id="id-843838495435">
+        <title>Analog to Digital Conversion</title>
+        <para id="id8468296">Sampling is the process of converting a continuous real time signal into a discrete time signal. The basics of sampling form the basis for much of today’s music recording industry. Sophisticated digital to analog converters (DAC) can be found in music studios across the world. </para>
+        <para id="id6736847">A DAC works by converting voltages into a digital number representing the corresponding voltage. The digital representations of these signals can then be manipulated by a computer, introducing various effects and gains. After processing, the signal can be converted back into an analog signal using a digital to analog converter.</para>
+        <figure id="id7396275"><media id="idm1148064" alt=""><image src="../../media/graphics1-5a69.png" mime-type="image/png" height="244" width="488"/></media>
+        <caption> A visual example of digital sampling of an analog signal.</caption></figure>
+      </section>
+      <section id="id-292764090956">
+        <title>Nyquist-Shannon Sampling Theory and Aliasing</title>
+        <para id="id7699306">The Nyquist-Shannon theory states that exact reconstruction of a continuous time signal from its samples is possible if the signal is bandlimited and the sampling frequency is at least twice that bamdwodth. </para>
+        <para id="id8491117">For example, the human ear can hear sounds from 20-20,000Hz. This means that if we want to recreate an audio signal with the complete range of recorded frequencies we must sample the signal at a minimum of 40,000Hz. Typical music is coded and sampled at 44,100Hz which obeys the Shannon-Nyquist theorem. The reason for the extra bandwidth is due to imperfect low-pass filter effects, which is outside the scope of this module.</para>
+        <figure id="id8469178"><media id="idp9271056" alt=""><image src="../../media/graphics2-2956.png" mime-type="image/png" height="247" width="516"/></media>
+        <caption> A visual example of an appropriately band limited signal.</caption></figure>
+        <para id="id6679055">Aliasing occurs when the Nyquist-Shannon Theorem is not obeyed, i.e. when the sampling rate is not at least two times the band limit’s frequency. Aliasing is the overlap of spectrums at the band edges and results in an incorrectly reproduced signal. These overlaps corrupt the signal by adding the two spectrums from the overlapping bands.</para>
+        <figure id="id8491231"><media id="idp214336" alt=""><image src="../../media/graphics3-9a11.png" mime-type="image/png" height="221" width="650"/></media>
+        <caption> A visual example of a aliasing in a signal.</caption></figure>
+      </section>
+      <section id="id-610129080831">
+        <title>Fast Fourier Transform</title>
+        <para id="id6760908">To be able to process bandwidth gains, one must move the samples of the continuous time signal into the frequency regime. This is accomplished quickly and efficiently using the Fast Fourier Transform (FFT). The equation for this is as follows:</para>
+        <figure id="id6682007"><media id="idm10596256" alt=""><image src="../../media/graphics4-277f.png" mime-type="image/png" height="56" width="273"/></media>
+        <caption> The Fast Fourier Transform.</caption></figure>
+        <para id="id7350794">This moves the signal into the frequency regime with N points. There is a problem in that you need a very long FFT to accomplish a perfect spectrum. Long FFTs are computationally expensive and are difficult to accomplish in real time, and a compromise between speed an resolution must be made. </para>
+      </section>
+      <section id="id-371084061583">
+        <title>Inverse Fast Fourier Transform</title>
+        <para id="id7436733">Once the signal has been manipulated in the frequency regime, you have to convert those values back into a digital representation of the signal. To do this you use the Inverse Fast Fourier Transform:</para>
+        <figure id="id7415142"><media id="idm1930016" alt=""><image src="../../media/graphics5-0ed8.png" mime-type="image/png" height="56" width="265"/></media>
+        <caption> The Inverse Fast Fourier Transform.</caption></figure>
+        <para id="id6662731">Since we have modified the spectrum, this new digital signal may have imaginary parts in it. Digital to analog converters do not interpret imaginary numbers so we must take the real part of the modified signal to be able to reproduce it.</para>
+        <para id="id7693847"/>
+      </section>
+    </section>
+  </content>
+</document>

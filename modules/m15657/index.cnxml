@@ -1,0 +1,78 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>MATLAB EQ: Sound Sampling</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>1a2edacc-30ae-4cfc-8eb1-fb4f8d2fa1ea</md:uuid>
+</metadata>
+  <content>
+    <section id="id-0624531588702">
+      <title>Sampling Windows Audio Data in MATLAB</title>
+      <para id="id7448503">This module will walk you through the coding process of saving input audio data from a Windows sound card.</para>
+      <section id="id-781472323068">
+        <title>Setup</title>
+        <para id="id8773295">The first thing you need to do is set how often you would like MATLAB to access your sound card, and how fast you want it to do so. This multiplying these two values together will give you the total size of your sample space. The code below is how we initialized our data input.</para>
+        <para id="id8209133">
+          <code>refreshrate = .04644; % sec</code>
+        </para>
+        <para id="id9417181">
+          <code>samplerate = 44100;  % Hz</code>
+        </para>
+        <para id="id9370472">
+          <code>ai = analoginput('winsound', 1); %windows addchannel(ai,[1 2]); %two channels</code>
+        </para>
+        <para id="id8112052">
+          <code>samplerate = setverify(ai, 'SampleRate', samplerate); </code>
+        </para>
+      </section>
+      <section id="id-0143589530311">
+        <title>Trigger</title>
+        <para id="id8545771">Next, you must set a command structure to let MATLAB know when to access the sound data. In the case of our graphical equalizer we wanted MATLAB to sample until we told it to stop so we created an infinite trigger loop. To do this you must set the triggers on your input class.</para>
+        <para id="id10065545">
+          <code>ai.TimerPeriod = refreshrate;</code>
+        </para>
+        <para id="id8922321">
+          <code>spt = round(samplerate * refreshrate);</code>
+        </para>
+        <para id="id10098097">
+          <code>ai.SamplesPerTrigger = spt;</code>
+        </para>
+        <para id="id9215054">
+          <code>set(ai, 'TriggerRepeat', Inf);</code>
+        </para>
+        <para id="id9386323">
+          <code>set(ai, 'TimerFcn' , @getdata);</code>
+        </para>
+        <para id="id8922658">
+          <code>start(ai);</code>
+        </para>
+      </section>
+      <section id="id-76443097347">
+        <title>Storing Data and Stopping</title>
+        <para id="id9238671">Now that you have begun to sample the soundcard, you have to store the sampled data in a buffer for analysis. You need to flush the data in your acquisition structure or you will suffer serious memory leaks. Also, the try and catch structure allows the loading of empty values if the peekdata is empty (a type of error suppression).</para>
+        <para id="id9325021">
+          <code>try</code>
+        </para>
+        <para id="id6698461">
+          <code>timesig = peekdata(ai,samples);</code>
+        </para>
+        <para id="id9419218">
+          <code>flushdata(ai)</code>
+        </para>
+        <para id="id9149410">
+          <code>catch</code>
+        </para>
+        <para id="id8921584">
+          <code>timesig = [];</code>
+        </para>
+        <para id="id9378528">
+          <code>end</code>
+        </para>
+        <para id="id9334482">Stopping the data acquisition is simple:</para>
+        <para id="id10090593">
+          <code/>
+        </para>
+        <para id="id10096737">
+          <code>stop(ai)</code>
+        </para>
+      </section>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,28 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Implementation: Detecting a Hit</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7a4c23b7-bc0d-4aa0-92ea-75a299e90dd3</md:uuid>
+</metadata>
+  <content>
+    <section id="id-76416364864">
+      <title>Hitting the Drums: A Velocity Computational Approach</title>
+      <para id="id3607246">You now have the positions of the LEDs in every frame. Our goal here is to detect when and which drums were hit so that the corresponding drums can produce their sounds. </para>
+      <section id="id-62435095905">
+        <title>Determining when a drum was hit</title>
+        <para id="id5661710">There are various innovative ways of tracking when the drums are hit. We chose to use a velocity computational approach due to its speed. Using this approach, you can look at the displacement of the LEDs in consecutive frames and calculate the velocity. Using basic physics, if the velocity changes from positive to negative (note that our coordinate system has the positive side of the y-axis pointing downwards) it implies a change in direction of the drumstick, or that a drum was hit. You should be able to figure out approximately which frame the drum was hit in. Since the hit point is returned in terms of two-dimensional coordinates, you can figure out which drum(s) are hit. </para>
+        <figure id="id3374006"><title>Variation in velocity with the movement of the LEDs</title>
+          <media id="idp6933568" alt=""><image src="../../media/graphics1-0df8.jpg" mime-type="image/jpeg" height="387" width="600"/></media>
+        <caption>See if you can guess when drums were hit.</caption></figure>
+        
+        
+      </section>
+      <section id="id-00387431682295">
+        <title>Determining which drum was hit</title>
+        <figure id="id4708694"><title>Position of the Drums</title>
+          <media id="idp7762752" alt=""><image src="../../media/graphics2-5f80.jpg" mime-type="image/jpeg" height="383" width="493"/></media>
+        <caption>[1: Cymbal; 2: BigTom; 3: Small Tom; 4: Floor Tom; 4: Snare]</caption></figure>
+        
+        <para id="id3239895">The frame should be broken down into rectangles with assigned x and y coordinates where the drums are positioned. Our drum kit consists of the Crash Cymbal, the Big Tom, the Small Tom, the Floor Tom and the Snare. We check to see if the hit-point falls in the space assigned for any of the drums, and if it does, we move on to producing the sound and displaying the image on the computer screen. However, if the hit point is outside the frame, it is taken as a missed hit.</para>
+      </section>
+    </section>
+  </content>
+</document>

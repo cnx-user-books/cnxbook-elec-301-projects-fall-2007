@@ -1,0 +1,13 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Conclusion and Possible Improvements</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>801f9a0a-716f-421e-9a17-17d21fd602e5</md:uuid>
+</metadata>
+  <content>
+    <section id="id-987015452227">
+      <title>Conclusions and Possible Improvements</title>
+      <para id="id3625398">While we did not create a fully working prototype, we believe that our algorithm is a solid approach for implementing a solution to this problem. While trying to implement the whistle detection in LabVIEW, we were faced with obtaining synchronized samples from two audio input sources while outputting through another. In order to assure that all samples are read in at the same time, we would need to use real time operating system or at least the real time LabVIEW plugin. We believe the best solution to this problem would be to implement the system in hardware where we would have complete control over sample acquisition. </para>
+      <para id="id8285032">We were able to implement the LMS filter in MATLAB, but its running time was too long to be a feasible solution. Its running time appeared to be O(n^2) and running the filter on a 10 second clip from a song took 4 hours to process. Again, since the LMS filter is such a popular adaptive filter, more efficient implementations must exist; and implementing it in hardware would surely provide a significant performance improvement.</para>
+      <para id="id5162894">Finally, one of the most important advantages of our design is that it’s modular. While we chose to implement a rising/falling frequency detector, any type of aural recognition could be implemented with this system. For example, we could replace the STFT and increasing/decreasing detector with a voice recognition system. </para>
+    </section>
+  </content>
+</document>

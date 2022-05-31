@@ -1,0 +1,16 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Conclusion</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>cfa56a81-07bd-4e04-bf8d-9341f2c78320</md:uuid>
+</metadata>
+  <content>
+<section id="sum">
+<title>Summary</title>
+    <para id="element-108">We have looked at the various ways that a laugh track can be detected and how to implement a laugh track detection algorithm as a Directshow filter. The most effective way of detecting a laugh track appears to be looking at the waveform in the time domain instead of in the frequency domain. The algorithm to use for envelope detection can be changed and become increasingly more sophisticated as we attempt to catch and process correctly some of the more difficult cases.</para>
+</section>
+<section id="det_tech">
+<title>Detection Techniques</title>
+<para id="element-424">There are multiple ways to generate the envelope we use for detecting a laugh track. The simplest method is to square the signal and then low pass filter it, which gives quite good results. An even better algorithm involves using a Hilbert transform to generate the envelope, but this was too computationally expensive to implement in our Directshow filter.</para><para id="element-832">We have also briefly discussed some of the ways to detect the envelope once we have generated a signal to pick out laughs from. On the simpler range of the spectrum, we can have a width and height thresholds for the laugh portion of the signal's envelope. On the other hand, we could also fit laugh tracks to polynomial curves and then use a Support Vector Machine to detect laugh tracks based on a database of positive and negative matches for laugh tracks.</para>   
+</section><para id="element-804">In the end, we found that detecting and removing laugh tracks from an audio signal is much more complicated than it may appear on the surface. As a human, it is very easy to spot a laugh in the signal, but to create a system that can do this automatically is more complicated. Another interesting aspect of the system is how to remove the laugh tracks, which can be complicated because people often talk over the laugh tracks in our signals. To remove only the laugh track while leaving in the human voice signals is something that needs further exploration.</para>
+  </content>
+  
+</document>

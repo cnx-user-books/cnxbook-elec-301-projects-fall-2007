@@ -1,0 +1,260 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Least Mean Squares Adaptive Filters</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>c9b71adf-cafd-4813-9e81-3101c3148a15</md:uuid>
+</metadata>
+  <content>
+    <section id="id-554694002068">
+      <title>Least Mean Squares Adaptive Filters</title>
+      <section id="id-846603262408">
+        <title>Why LMS?</title>
+        <para id="id5940858">In our system, the music that is being played by the computer is a known output that is being fed into the room, which has an unknown response, and picked up by the microphone. Since we have the signal both before and after the influence of the room, this is a candidate for an adaptive filter. The adaptive filter can be used to try to estimate the room’s response based on the music being outputted and the input to the microphone. Once an estimate is available, we can use it to remove the interference of the music from the input to the microphone. </para>
+      </section>
+      <section id="id-805522087903">
+        <title>LMS Overview</title>
+        <para id="id7148813">One of the most popular adaptive algorithms used today is the Least Mean Squares (LMS) algorithm. Essentially, this algorithm attempts to minimize the error that occurs between the detected (or desired signal), d[n], and the estimated value of the signal, y[n]. This estimated signal is created by taking the original input, x[n] , and running it through an approximation of the unknown channel. Basically:</para>
+        <para id="id5941142">
+          <m:math>
+            <m:semantics>
+              <m:mrow>
+                <m:mstyle fontsize="12pt">
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mi>y</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mi>x</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">∗</m:mo>
+                        <m:mover accent="true">
+                          <m:mi>h</m:mi>
+                          <m:mo stretchy="false">ˆ</m:mo>
+                        </m:mover>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mn>0</m:mn>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mi>x</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">∗</m:mo>
+                        <m:mover accent="true">
+                          <m:mi>h</m:mi>
+                          <m:mo stretchy="false">ˆ</m:mo>
+                        </m:mover>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mo stretchy="false">…</m:mo>
+                        </m:mrow>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mi>x</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mi>N</m:mi>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">∗</m:mo>
+                        <m:mover accent="true">
+                          <m:mi>h</m:mi>
+                          <m:mo stretchy="false">ˆ</m:mo>
+                        </m:mover>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>N</m:mi>
+                      <m:mo stretchy="false">]</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mstyle>
+                <m:mrow/>
+              </m:mrow>
+              <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] =x \[ n \] * { hat  {h}} \[ 0 \] +x \[ n - 1 \] * { hat  {h}} \[ 1 \] + dotslow +x \[ n - N \] * { hat  {h}} \[ N \] } {}</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="id5805086">or </para>
+        <para id="id6379178">
+          <m:math>
+            <m:semantics>
+              <m:mrow>
+                <m:mstyle fontsize="12pt">
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mi>y</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:msubsup>
+                          <m:mi>x</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>N</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>T</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msubsup>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">∗</m:mo>
+                        <m:mover accent="true">
+                          <m:mi>h</m:mi>
+                          <m:mo stretchy="false">ˆ</m:mo>
+                        </m:mover>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo stretchy="false">]</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mstyle>
+                <m:mrow/>
+              </m:mrow>
+              <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] =x rSub { size 8{N} }  rSup { size 8{T} }  \[ n \] * { hat  {h}} \[ n \] } {}</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="id7158840">where N is the order to which you are approximating the unknown system, 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>x</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>N</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x rSub { size 8{N} } } {}</m:annotation></m:semantics></m:math> is a vector of the last N value of x, and each h[n] is a weight. </para>
+        <figure id="id6050155"><title>LMS Algorithm Block Diagram</title>
+          <media id="idm8198208" alt=""><image src="../../media/graphics1-abcb.jpg" mime-type="image/jpeg" height="207" width="456"/></media>
+        <caption>x[n] is the input to the filter, v[n] is the interference in the room, h[n] is the impulse response we're modeling, and e[n] is the error in this modeling. </caption></figure>
+        <para id="id5748277">Once the signal and its approximation are found, the error is just the difference between the two signals at the current point in time.</para>
+        <para id="id6064464">
+          <m:math>
+            <m:semantics>
+              <m:mrow>
+                <m:mstyle fontsize="12pt">
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mi>e</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mi>d</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mi>y</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo stretchy="false">]</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mstyle>
+                <m:mrow/>
+              </m:mrow>
+              <m:annotation encoding="StarMath 5.0"> size 12{e \[ n \] =d \[ n \]  - y \[ n \] } {}</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="id5937225">Using the error, we can approximate the next set of weights as follows:</para>
+        <para id="id6033754">
+          <m:math>
+            <m:semantics>
+              <m:mrow>
+                <m:mstyle fontsize="12pt">
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mover accent="true">
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">ˆ</m:mo>
+                      </m:mover>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mi>h</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mrow>
+                          <m:mi>μ</m:mi>
+                          <m:mo stretchy="false">∗</m:mo>
+                          <m:mi>e</m:mi>
+                        </m:mrow>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">∗</m:mo>
+                        <m:msub>
+                          <m:mi>x</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>N</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo stretchy="false">]</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mstyle>
+                <m:mrow/>
+              </m:mrow>
+              <m:annotation encoding="StarMath 5.0"> size 12{ { hat  {h}} \[ n+1 \] =h \[ n \] +μ*e \[ n \] *x rSub { size 8{N} }  \[ n \] } {}</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="id6036853">where µ is a constant. </para>
+      </section>
+      <section id="id-247230892671">
+        <title>Choosing µ</title>
+        <para id="id5946510">The choice of µ is an important one as it greatly affects how the system will perform. Small values allow for greater precision in convergence, but slow down the response time of the system. If the value is too small, then the adaptive filter will not adapt fast enough. If it is too large, the system will not converge at all, and the value weights will actually diverge. Experimentation with different systems and environments is necessary to choose the ideal value for µ. </para>
+      </section>
+      <section id="id-660429227497">
+        <title>Isolating the Whistle</title>
+        <para id="id5885374">It can be shown that the error value will converge on a minimum point. This theoretical minimum will likely not be at zero error, since there is outside noise and interference, but it represents the original signal’s effect on d[n] being completely removed. In the case of our signal detection system, the whistle that we are trying to detect will still be in the e[n] and therefore we will use e[n] as the input to the rest of our system. Once the adaptive filter has settled down, this signal will be the input to the microphone minus the estimated value of the music when it reaches the microphone.</para>
+      </section>
+    </section>
+  </content>
+</document>

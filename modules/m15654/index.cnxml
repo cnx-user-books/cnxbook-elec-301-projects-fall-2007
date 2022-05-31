@@ -1,0 +1,52 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>MATLAB EQ: Approach: Time-Domain and Effects</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a514d6a8-28bd-4890-9f84-3f54fe53d42a</md:uuid>
+</metadata>
+  <content>
+    <section id="id-235182373767">
+      <title>Approach: Time-Domain and Effects</title>
+      <para id="id10853321">Once the Inverse Fast Fourier Transform (IFFT) has taken place, we are able to apply our time-domain effects: Reverb, Flange, and Distortion. When the effects have been implemented, we then output our modified signal into a plot where we are able to analyze the new spectrum of our signal. The last two effects, Gain and Volume, are included at the end.</para>
+      <section id="id-444968782566">
+        <title>Flange</title>
+        <para id="id12274985"/>
+        <para id="id12132543">Flanging is another time-domain audio effect which happens when two audio signals are mixed together, with the requirement that one of the signals is time-delayed by a very small amount of time. An analogy we like is the simultaneous playing of two tape recorders playing the same track. Then if we pause one of them for a small amount of time and then hit play, the combined audio of the two tape recorders is flanging.</para>
+        <para id="id10184231">In our coding, we used 15 refresh periods. </para>
+        <figure id="id11549963">
+          <media id="idm5537072" alt=""><image src="../../media/graphics1-5a3e.jpg" mime-type="image/jpeg" height="419" width="332"/></media>
+        </figure>
+      </section>
+      <section id="id-470610818094">
+        <title>Reverb</title>
+        <para id="id11624797">By definition, reverberation is the lingering of sound in a given space once the original sound is removed. It is not necessarily termed “echo” as reverb is the decay of a large number of echoes when the sound is absorbed. Thus, once the sound signal stops, the reverberated reflections carry on and gradually decrease in amplitude until they zero out.</para>
+        <para id="id10578802">In our implementation, we used 15 consecutive refresh periods. This wasn’t incredibly realistic as we could have modified our design to produce a better reverb, but this allowed our program to function smoothly without memory overflows in MATLAB.</para>
+        <para id="id11549385">The main visual difference between flange and reverb was the persistence of sound once the song/audio clip ended.</para>
+        <figure id="id9655378">
+          <media id="idm864880" alt=""><image src="../../media/graphics2-83eb.jpg" mime-type="image/jpeg" height="414" width="332"/></media>
+        </figure>
+      </section>
+      <section id="id-452296464522">
+        <title>Distortion</title>
+        <para id="id12788669">A distortion that we introduced in our equalizer can also be referred to as “audio clipping” as we cut off signals above a certain amplitude. </para>
+        <para id="id8685674">This is also called hard clipping. Distortion is usually an unwanted effect except in music, such as Gabber (150-220 beats-per-minute hardcore techno) or as an electric guitar effect.</para>
+        <para id="id11552834">In order to guarantee a visual representation, we went ahead and clipped our signals at the 0.5 mark in amplitude.</para>
+        <figure id="id9414590">
+          <media id="idm13886208" alt=""><image src="../../media/graphics3-0740.jpg" mime-type="image/jpeg" height="418" width="332"/></media>
+        </figure>
+      </section>
+      <section id="id-981588731002">
+        <title>Gain</title>
+        <para id="id11545754">In our equalizer, we implemented a gain control which provided for the increase of our input signal’s amplitude for a given frequency band. We had 10 frequency bands of which we could modify the gain levels.</para>
+        <figure id="id12288033">
+          <media id="idm4832368" alt=""><image src="../../media/graphics4-d457.jpg" mime-type="image/jpeg" height="418" width="332"/></media>
+        </figure>
+      </section>
+      <section id="id-526724802838">
+        <title>Volume</title>
+        <para id="id12297127">Volume is the implementation of gain for all frequencies.</para>
+        <figure id="id8168230">
+          <media id="idm3231712" alt=""><image src="../../media/graphics5.jpg" mime-type="image/jpeg" height="419" width="332"/></media>
+        </figure>
+      </section>
+    </section>
+  </content>
+</document>

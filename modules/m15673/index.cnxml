@@ -1,0 +1,27 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Algorithm Overview</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>61af7dba-1d7b-4ddf-bf47-8e05482f067b</md:uuid>
+</metadata>
+  <content>
+    <section id="id-544977739399">
+      <title>Algorithm Overview</title>
+      <para id="id7717279">The first step in detecting a signal is to input it into the system. Since we are using an audio signal, a microphone is the obvious choice. However, the desired control signal is not the only sound in the room. There is also the music that is being played through the speakers as well as outside noise. Unfortunately, there is not much that can be done about the random noise that is present in the room. However, there are tools available that allow us to minimize the interference caused by the music. Specifically, we can use an adaptive filter to mimic the room’s effect on the output of the sound card, providing us with an estimate of the music’s contribution to the signal received by the microphone. We can subtract the microphone’s signal from this estimate in order to obtain—hopefully—only the whistle. </para>
+      <para id="id10988536"><link target-id="id7324725">Figure 1</link> shows the block diagram of our system. All of these components fall into four main categories:
+
+<list id="enlist" list-type="enumerated">
+<item>Signal acquisition</item>
+        <item>Whistle isolation</item>
+        <item>Whistle frequency analysis</item>
+        <item>iTunes interface</item>
+</list>
+
+The acquisition phase is the top portion of the diagram, the whistle isolation system is represented by the ĥ box and the band pass filter, the rest of the diagram (except for the Java controller) comprise the whistle analysis phase, and the Java controller is the iTunes interface.</para>
+      
+      <figure id="id7324725"><title>Our System's Block Diagram</title>
+        <media id="idp3829248" alt=""><image src="../../media/graphics1-124e.png" mime-type="image/png" height="613" width="480"/></media>
+ <caption>In our system, the sound is output through the speaker, and the microphone receives the music and whistles while the sound card receives the audio without the room affecting it.  We then remove the music and process the whistle.</caption></figure>
+      <para id="id9770769">After isolating the whistle, we apply a band pass filter whose pass band corresponds to common whistle frequencies in order to remove extraneous noise outside of these whistle frequencies. </para>
+      <para id="id12242825">We then take the Short Time Fourier Transform in order see how the frequency components of the whistle change over time. If the frequency of the whistle is increasing iTunes should advance to the next track, and a decreasing frequency will skip to the previous track. To accomplish this, we examine the frequency with maximum power (the argmax in the figure below) and accumulate several readings of this frequency. In order to see if this function is increasing or decreasing we take the derivative and examine its average value. If the average value is positive, the function must have been increasing and the whistle must have been from high to low frequencies. </para>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,14 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Team Members and Acknowledgments</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>254e1456-e1ab-49c8-84f6-49809ea89c0a</md:uuid>
+</metadata>
+  <content>
+    <para id="id42085461">“Tap That” was brought to you by Janice Chow, Tanwee Misra and Kriti Charan.</para>
+    <para id="id43687782"><emphasis>Kriti Charan</emphasis> maintained the caffeinated group’s sanity and ensured that we stuck to the cynical 6-point project plan as outlined in Mr. Dye’s office. She connected the webcam to the computer. Not just by plugging the USB cord in, but by writing proj_301.m. She also channeled her fear of insects into debugging the code. Basically she was the project guru. </para>
+    <para id="id43670316"><emphasis>Janice Chow</emphasis> supplied us with free coffee and was responsible for deciding where the user had to hit to make the program react in a certain way, and what those reactions should be. In other words she wrote drumdisp.m and drumdet.m, and by nefarious means, obtained all the images and sounds that were required. She was also a great test subject to see if our program was working or not and tremendously enjoyed playing with Google's ketchup.</para>
+    <para id="id42090639"><emphasis>Tanwee Misra</emphasis> kept us entertained with her French and was responsible for the program’s ability to see color and use that to figure out what the test subject was doing with the drumsticks. In other words she wrote coord.m and detectcolor.m. She also encouraged group projects by working with Janice to make the poster, and Kriti to make the drumsticks.</para>
+    <para id="id42128704">We are grateful to <emphasis>Mr. Michael Dye</emphasis> and <emphasis>Dr. James Young</emphasis> for all the help they provided as we made and repaired the drumsticks. We are also grateful to <emphasis>Dr. Kronister</emphasis> for unknowingly providing us with so much.</para>
+    <para id="id43618377">We would also like to thank <emphasis>Dr. B (aka RichB)</emphasis> and <emphasis>Mr. D (aka Mark Davenport)</emphasis> for all the help, support and guidance that they have provided at every step along the way.</para>
+    <para id="id43627317">Special thanks to all our <emphasis>rock star fans</emphasis> who tried our drum kit on the day of the presentation.</para>
+  </content>
+</document>

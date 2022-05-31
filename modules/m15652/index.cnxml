@@ -1,0 +1,11 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>MATLAB EQ: Problem</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>b224f379-6ee8-4b95-86da-7f14083dfcde</md:uuid>
+</metadata>
+  <content>
+    <para id="id8212964">The challenge of this project was to implement the mathematical form a graphic equalizer into an intuitive graphical user interface. The group chose to create the GUI in MATLAB. Working in MATLAB had many advantages and disadvantages. The main advantage of working in MATLAB was that MATLAB was very adept at signal manipulation. Since it was designed to manipulate matrices, MATLAB allowed for us to easily code a working bin matrix, and to plot in real time the effects of our signal alterations in time and frequency.</para>
+    <para id="id9319504">The main disadvantage of using MATLAB was that since MATLAB does not do things in parallel, we were not able to simultaneously take input from the soundcard to our graphic equalizer, and send an output to the soundcard.</para>
+    <para id="id5443571">Perhaps a better approach would have been to use LabView instead of MATLAB. LabView is designed to interface with hardware, and now it has incorporated the ability to run .m files in LabView. Therefore, in hindsight, a better way to attack the problem would have been to use LabView.</para>
+    <para id="id8939042">However, we did make a working graphical user interface using MATLAB that was able to create a visual output.</para>
+  </content>
+</document>

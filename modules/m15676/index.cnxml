@@ -1,0 +1,118 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Joint Time-Frequency Analysis</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7ac4ee47-0902-4859-b696-b2a4b000e47f</md:uuid>
+</metadata>
+  <content>
+    <section id="id-407248157465">
+      <title>Joint Time-Frequency Analysis</title>
+      <section id="id-069585928839">
+        <title>Short Time Fourier Transform</title>
+        <para id="id48206072">After our system has isolated the whistle sound, it is input to a continuously running analysis algorithm based on the result of a Short-Time Fourier Transform. While the traditional Fourier transforms do not maintain a sense of time, the STFT allows for joint time-frequency analysis. The formula for the STFT is:</para>
+        <para id="id48414171"><m:math>
+            <m:semantics>
+              <m:mrow>
+                <m:mstyle fontsize="12pt">
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>STFT</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">{</m:mo>
+                          <m:mrow>
+                            <m:mi>x</m:mi>
+                            <m:mo stretchy="false">[</m:mo>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">]</m:mo>
+                          </m:mrow>
+                          <m:mo stretchy="false">}</m:mo>
+                        </m:mrow>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mi>X</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mi>,</m:mi>
+                      <m:mi>w</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mrow>
+                          <m:munderover>
+                            <m:mo stretchy="false">∑</m:mo>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mi>n</m:mi>
+                                  <m:mtext>=-∞</m:mtext>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>∞</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:munderover>
+                          <m:mrow>
+                            <m:mi>x</m:mi>
+                            <m:mo stretchy="false">[</m:mo>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">]</m:mo>
+                            <m:mi>w</m:mi>
+                            <m:mo stretchy="false">[</m:mo>
+                            <m:mrow>
+                              <m:mi>n</m:mi>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>m</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">]</m:mo>
+                            <m:msup>
+                              <m:mi>e</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mrow>
+                                    <m:mo stretchy="false">−</m:mo>
+                                    <m:mi fontstyle="italic">jwn</m:mi>
+                                  </m:mrow>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mstyle>
+                <m:mrow/>
+              </m:mrow>
+              <m:annotation encoding="StarMath 5.0"> size 12{ ital "STFT" lbrace x \[ n \]  rbrace =X \( m,w \) = Sum cSub { size 8{n"=-¥"} }  cSup { size 8{¥} }  {x \[ n \] w \[ n-m \] e rSup { size 8{-jwn} } } } {}</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="id48591970">Individual sections of the signal are windowed and their FFT is taken. The result of this operation is a two dimensional function in terms of the offset from zero (“time”) and the frequency content of the signal. According to the Heisenberg Uncertainty Principle, however, we cannot have an arbitrary amount of resolution in both the time and frequency domains. For our application, we are only interested in detecting trends in the frequency with highest power, so time resolution is less important. </para>
+      </section>
+      <section id="id-354677606386">
+        <title>Spectrogram</title>
+        <para id="id47789382">Squaring the magnitude of the STFT results in a 3-D function is known as a spectrogram. The spectrogram of a whistle whose pitch goes from low to high looks like this.</para>
+        <figure id="id47909092"><title>Whistle Spectrogram</title>
+<media id="idp3983632" alt=""><image src="../../media/graphics1-b2bd.png" mime-type="image/png" height="380" width="518"/></media>
+        
+<caption>This is a whistle of increasing frequency.  Each slice of the spectrogram is an FFT of a certain windowed chunk of the signal.  This embeds a sense of time in the spectrogram.</caption></figure>
+        <para id="id49053691">Notice that there is a dominant power (dark red) that shows a very clear upward trend over time. Each slice of the frequency axis at a particular time corresponds to a single chunk of the signals’ FFTs. The dark red corresponds to the maximum of one of these FFTs, and as time passes (in the positive vertical direction), we see the frequency of highest power increases. Below is a graph of three of these component FFTs, illustrating how the peak frequency increases across time. Since pitch and frequency are essentially synonymous, we can determine what kind of whistle is input by looking at trends in the frequency with the dominant power.</para>
+        <figure id="id48120620"><title>Power vs. Frequency for 3 Spectrogram Components</title>
+          <media id="idp11182832" alt=""><image src="../../media/graphics2-fc2e.jpg" mime-type="image/jpeg" height="427" width="568"/></media>
+        <caption>Here are 3 of the FFTs that comprise the spectrogram above.  The frequency of maximum power is increasing.</caption></figure>
+        <para id="id47866971">With the dominant frequency for any given windowed input now known, our system then takes the discrete-time derivative of that frequency over the window. Calculus tells us that the derivative of a function at a point is positive for increasing functions and negative for decreasing functions. By continuously taking derivatives of these windows our system can track the basic shape of the spectrogram.</para>
+      </section>
+      <section id="id-195091524586">
+        <title>Analysis using the STFT</title>
+        <para id="id48524287">Our analysis algorithm keeps a running buffer of the signs of these discrete-time derivatives. It then takes the magnitude signs inside the buffer. If the buffer encounters a number of continuous signs above or below a certain threshold, either positive or negative, it concludes that the input is a whistle with increasing or decreasing pitch, respectively. Finding the optimal threshold value is mostly trial and error; we looked at recordings of sine waves with constant frequencies and white noise in order to determine a reasonable upper bound for the area under the derivative curve. </para>
+        <para id="id48422681">There is a tradeoff between the size of the buffer and the quality of the analysis. Given that a whistle may last up to three seconds, it’s clear that the buffer need not contain that many samples in order to find and characterize the whistle. But on the same token, too few samples will result in an unusual number of false positives and change the song without any user interaction. And while this is not necessarily complex math, doing it quickly and continuously requires the window be as small as possible.</para>
+      </section>
+    </section>
+  </content>
+</document>

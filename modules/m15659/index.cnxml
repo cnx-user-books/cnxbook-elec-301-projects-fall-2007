@@ -1,0 +1,153 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Data and Processing</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>90371ebd-fbef-4f84-9e80-1b439f965fe6</md:uuid>
+</metadata>
+  <content>
+    <section id="id-953923846768">
+      <title>Introduction and Preparation of SAR Data</title>
+      <para id="id13021023">In order to simulate the processing of SAR data, we received SAR data from the ECE department at Ohio State University. The data they gave us was acquired through a computer simulated fly-by past a CAD model of a backhoe.</para>
+      <figure id="id12399940">
+        <media id="idp7346864" alt=""><image src="../../media/graphics1-f791.png" mime-type="image/png" height="238" width="307"/></media>
+      </figure>
+      <para id="id12606971">The data we received from OSU was in digital format, meaning the analog mixing and low pass filtering was already completed and we received digitized versions of Cθ(t). This function was shown to be equivalent to Pθ(U), the Fourier transform of our projection slices pθ(u). The matlab file that contained this information was a 512x1541 matrix iq_lin, a vector of various Pθ signals for different values of θ, the viewing angle. There were 1541 different viewing angles, listed in az_lin, that stepped by 1/14˚ for each element and varied from -10˚ to 100˚, a median viewing angle of 45˚. We also received a vector of length 512 called f that contained the microwave frequencies (7-13 GHz) that were transmitted and received. By using the wideband approximation, we made the transformation from time frequency to spatial frequency via</para>
+      <para id="id11816341">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mstyle fontsize="12pt">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mi>R</m:mi>
+                        <m:mo stretchy="false">≈</m:mo>
+                        <m:mrow>
+                          <m:mn>2ω</m:mn>
+                          <m:mo stretchy="false">/</m:mo>
+                          <m:mi>c</m:mi>
+                        </m:mrow>
+                      </m:mrow>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mo stretchy="false">(</m:mo>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mn>4π</m:mn>
+                      <m:mo stretchy="false">/</m:mo>
+                      <m:mi>c</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>f</m:mi>
+                  </m:mrow>
+                </m:mrow>
+              </m:mstyle>
+              <m:mrow/>
+            </m:mrow>
+            <m:annotation encoding="StarMath 5.0"> size 12{R approx 2ω/c= \( 4π/c \) f} {}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="id12706611">where R is the radial spatial frequency and f is the microwave frequency content. By the projection slice theorem, we have that the various Pθ are arranged radially in a polar grid along the various angles θ. We then get that our data lies on a domain </para>
+      <para id="id12767435">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mstyle fontsize="12pt">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mtext>10</m:mtext>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mi>°</m:mi>
+                        <m:mo stretchy="false">≤</m:mo>
+                        <m:mi>θ</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">≤</m:mo>
+                      <m:mtext>100</m:mtext>
+                    </m:mrow>
+                    <m:mi>°</m:mi>
+                  </m:mrow>
+                </m:mrow>
+              </m:mstyle>
+              <m:mrow/>
+            </m:mrow>
+            <m:annotation encoding="StarMath 5.0"> size 12{ - "10"° &lt;= θ &lt;= "100"°} {}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="id3420364">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mstyle fontsize="12pt">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mi>R</m:mi>
+                        <m:mo stretchy="false">∈</m:mo>
+                        <m:mi fontstyle="italic">ΔR</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mo stretchy="false">[</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mrow>
+                      <m:mn>4π</m:mn>
+                      <m:mo stretchy="false">/</m:mo>
+                      <m:mi>c</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mtext>min</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mi>,</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mrow>
+                      <m:mn>4π</m:mn>
+                      <m:mo stretchy="false">/</m:mo>
+                      <m:mi>c</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mtext>max</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mstyle>
+              <m:mrow/>
+            </m:mrow>
+            <m:annotation encoding="StarMath 5.0"> size 12{R in ΔR= \[  \( 4π/c \) f rSub { size 8{"min"} } , \( 4π/c \) f rSub { size 8{"max"} }  \] } {}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <figure id="id12599132">
+        <media id="idm9651824" alt=""><image src="../../media/graphics2-a84d.png" mime-type="image/png" height="290" width="267"/></media>
+      </figure>
+    </section>
+    <section id="id-29193886225">
+      <title>Processing of SAR Data </title>
+      <para id="id11612629">Knowing that our data is the Fourier transform of our image, after the proper preparation we want to take the inverse Fourier transform. To do this simply and efficiently (we don’t want Matlab running for hours!) we linearly interpolate the data to a Cartesian grid. This is done in our Matlab function sar_lin (code found in appendix). The idea is to find an inscribed rectangular grid inside our polar data. We chose to use the square centered at 45˚ inscribed in our ribbon. To interpolate we made a Cartesian grid at this location and computed the polar representation of each point in order to find its 4 nearest polar neighbors. Once those neighbors were found, the Cartesian point’s value was determined by linearly interpolating in the R-direction for the two θ values and then linearly interpolating in the θ-direction. The end result of our program’s running of this is shown below.</para>
+      <figure id="id11653697">
+        <media id="idp4250160" alt=""><image src="../../media/graphics3-1265.png" mime-type="image/png" height="242" width="285"/></media>
+      </figure>
+      <para id="id11770219">After linearly interpolating each point in the Cartesian grid we have formed, we now have our data in a form that allows us to take the 2-d inverse DFT by the fast Fourier transform method. This is what saved us computation time (program ran in about 15 seconds) and is the reason we interpolated to Cartesian coordinates to begin with. Below is the image after taking the inverse Fourier transform.</para>
+      <figure id="id12075304">
+        <media id="idp11656608" alt=""><image src="../../media/graphics4-2ec8.png" mime-type="image/png" height="239" width="301"/></media>
+      </figure>
+    </section>
+  </content>
+</document>

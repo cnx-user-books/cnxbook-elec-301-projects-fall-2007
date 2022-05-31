@@ -1,0 +1,113 @@
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en">
+  <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
+    <md:content-id>col10503</md:content-id>
+    <md:title>ELEC 301 Projects Fall 2007</md:title>
+    <md:language>en</md:language>
+    <md:license url="http://creativecommons.org/licenses/by/2.0/">Creative Commons Attribution License</md:license>
+    <md:uuid>beca8f22-6b8a-42f3-8cad-90246b064ca9</md:uuid>
+<md:slug>elec-301-projects-fall-2007</md:slug>
+</metadata>
+  <col:content>
+    <col:subcollection>
+      <md:title>Detection of Cell Boundaries in Optical Fiber Probe Images</md:title>
+      <col:content>
+        <col:module document="m15686"/>
+        <col:module document="m15687"/>
+        <col:module document="m15688"/>
+        <col:module document="m15689"/>
+        <col:module document="m15690"/>
+        <col:module document="m15691"/>
+        <col:module document="m15692"/>
+        <col:module document="m15693"/>
+        <col:module document="m15694"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Tap That: A Virtual Drum Kit</md:title>
+      <col:content>
+        <col:module document="m15698"/>
+        <col:module document="m15695"/>
+        <col:module document="m15696"/>
+        <col:module document="m15714"/>
+        <col:module document="m15699"/>
+        <col:module document="m15697"/>
+        <col:module document="m15704"/>
+        <col:module document="m15711"/>
+        <col:module document="m15709"/>
+        <col:module document="m15713"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Blind Source Separation via ICA</md:title>
+      <col:content>
+        <col:module document="m15702"/>
+        <col:module document="m15639"/>
+        <col:module document="m15708"/>
+        <col:module document="m15638"/>
+        <col:module document="m15712"/>
+        <col:module document="m15640"/>
+        <col:module document="m15701"/>
+        <col:module document="m15706"/>
+        <col:module document="m15703"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Remote Sound Detection Using a Laser</md:title>
+      <col:content>
+        <col:module document="m15680"/>
+        <col:module document="m15682"/>
+        <col:module document="m15679"/>
+        <col:module document="m15685"/>
+        <col:module document="m15683"/>
+        <col:module document="m15684"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>MATLAB EQ</md:title>
+      <col:content>
+        <col:module document="m15652"/>
+        <col:module document="m15655"/>
+        <col:module document="m15657"/>
+        <col:module document="m15650"/>
+        <col:module document="m15654"/>
+        <col:module document="m15656"/>
+        <col:module document="m15653"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>CANADA: Continuous Adaptive Non-Linear Analysis for Driving Applications</md:title>
+      <col:content>
+        <col:module document="m15674"/>
+        <col:module document="m15673"/>
+        <col:module document="m15675"/>
+        <col:module document="m15676"/>
+        <col:module document="m15677"/>
+        <col:module document="m15678"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Tomographic Processing of Spotlight-Mode SAR</md:title>
+      <col:content>
+        <col:module document="m15658"/>
+        <col:module document="m15667"/>
+        <col:module document="m15663"/>
+        <col:module document="m15661"/>
+        <col:module document="m15659"/>
+        <col:module document="m15660"/>
+        <col:module document="m15665"/>
+        <col:module document="m15668"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Laugh Track Suppression</md:title>
+      <col:content>
+        <col:module document="m15635"/>
+        <col:module document="m15644"/>
+        <col:module document="m15642"/>
+        <col:module document="m15637"/>
+        <col:module document="m15641"/>
+        <col:module document="m15643"/>
+      </col:content>
+    </col:subcollection>
+  </col:content>
+</col:collection>

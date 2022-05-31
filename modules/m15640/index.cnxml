@@ -1,0 +1,30 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Blind Source Separation Via ICA: Signal Processing Applications</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>dbdbef3c-9bcc-47e0-8098-929beec88cdb</md:uuid>
+</metadata>
+  <content>
+    <section id="id-642402618847">
+      <title>Blind Source Separation via ICA:</title>
+      <section id="id-538144990226">
+        <title>Applications: Audio/Visual Signal Processing </title>
+        <para id="id9441077">One of the most practical uses for blind source separation (<emphasis>BSS</emphasis>) is in the audio world. It has been used for noise removal without the need of filters or Fourier transforms, which leads to simpler processing methods. There are various problems associated with noise removal in this way, but these can most likely be attributed to the relative infancy of the BSS field and such limitations will be reduced as research increases in this field. </para>
+        <para id="id4018346">It isn’t hard to imagine many situations where you receive a mixed audio signal and would love to be able to isolate the various components. Now such situations can be resolved through the implementation and algorithm presented in this project. Instruments can be separated from each other in a concert, background noise can be eliminated in any environment, and two voices from a conversation can be completely separated, as shown by figure 1. </para>
+        <figure id="id4511152">
+          <media id="idp14315504" alt=""><image src="../../media/graphics1-4c92.png" mime-type="image/png" height="332" width="601"/></media>
+        </figure>
+        <para id="id9239592">Figure 1</para>
+        <para id="id3406440">Voices could potentially be encrypted in this way, mixing together signals so that the original sources are indistinguishable, but all you have to do to decrypt is break the signal down into the independent components. Jamming signals sent to cell phone towers could be isolated and completely removed, something that Special Operations forces around the world are apparently using to make sure their communications can’t be impeded.</para>
+        <para id="id8234726">In fact such transmission schemes such as code division multiple accesses (<emphasis>CDMA</emphasis>) can be implemented with BSS instead of the traditional orthogonality, another function of BSS that directly applies to the industry around cellular phones.</para>
+        <para id="id9140254">So long as you meet the required assumptions to be able to process data (that the components you are trying to isolate are indeed independent and that you have as many mixed signals as you have sources) you can process almost anything. The following images show BSS applied to <emphasis>visual </emphasis>examples of pictures. The format doesn’t matter; ICA can be run on anything, and will always provide correct results as long as the sources are independent to begin with.</para>
+        <figure id="id3279290">
+          <media id="idp10189600" alt=""><image src="../../media/graphics2-2e0e.jpg" mime-type="image/jpeg" height="300" width="453"/></media>
+        </figure>
+        <para id="id6499710">Mixed image signals</para>
+        <figure id="id9217802">
+          <media id="idp19482992" alt=""><image src="../../media/graphics3-3485.jpg" mime-type="image/jpeg" height="293" width="446"/></media>
+        </figure>
+        <para id="id5048555">Separated Source Signals</para>
+      </section>
+    </section>
+  </content>
+</document>

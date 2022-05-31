@@ -1,0 +1,177 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Blind Source Separation Via ICA: Implementation</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>ef687871-4da1-461c-95b0-c6be9dd1181d</md:uuid>
+</metadata>
+  <content>
+    <section id="id-425927225184">
+      <title>Blind Source Separation via ICA:</title>
+      <section id="id-48536344813">
+        <title>Implementation</title>
+        <figure id="id9265422">
+          <media id="idp3442288" alt=""><image src="../../media/graphics1-3dbf.png" mime-type="image/png" height="190" width="565"/></media>
+        </figure>
+        <para id="id9294379"/>
+        <para id="id9423880"/>
+        <para id="id9168513">In order to implement our design to enable the separation of two audio signals, we require two microphones and a processing computer with audio output capabilities. When two microphones are present in an environment with two sources, then they will record a mixing of both these signals, weighted by coefficients base on distance away from the microphone (remember that as a signal is further away from a recording source, the quieter it will be).</para>
+        <para id="id9276944"/>
+        <para id="id9140299">The mixed signal inputs of these microphones must then be imported into a processing computer that is able to run code based in C or MatLab (or potentially any other language, but the most efficient algorithm is run in MatLab and C). </para>
+        <para id="id3404248"/>
+        <para id="id4066962">The model for these mixed signals can be represented in matrix notation by:</para>
+        <para id="id8896515"><emphasis>x = </emphasis>A<emphasis>s</emphasis></para>
+        <para id="id9439732">
+          <emphasis/>
+        </para>
+        <para id="id3433085">As we can see, the signal vector is multiplied by some <emphasis>mixing matrix </emphasis>A. Therefore to isolate the signals <emphasis>s </emphasis>based on the mixed signals <emphasis>x </emphasis>we must find an inverse matrix A-1. To do this we implement a piece of Matlab code known as <emphasis>FastICA</emphasis>. The math behind the algorithm is explained elsewhere but the most important piece of code, the iteration to find the inverse mixing matrix, is displayed here:</para>
+        <para id="id8901288">
+          <code>% Take a random initial vector of length 1 and orthogonalize it</code>
+        </para>
+        <para id="id9418720">
+          <code>% with respect to the other vectors.</code>
+        </para>
+        <para id="id7601589">
+          <code>if initialStateMode == 0</code>
+        </para>
+        <para id="id9058303">
+          <code>w = randn (vectorSize, 1);</code>
+        </para>
+        <para id="id9562774">
+          <code>elseif initialStateMode == 1</code>
+        </para>
+        <para id="id8889466">
+          <code>w=whiteningMatrix*guess(:,round);</code>
+        </para>
+        <para id="id9106018">
+          <code>end</code>
+        </para>
+        <para id="id3384572">
+          <code>w = w - B * B' * w;</code>
+        </para>
+        <para id="id8653503">
+          <code>w = w / norm(w);</code>
+        </para>
+        <para id="id9166702">
+          <code/>
+        </para>
+        <para id="id5107414">
+          <code>wOld = zeros(size(w));</code>
+        </para>
+        <para id="id9218941">
+          <code>wOld2 = zeros(size(w));</code>
+        </para>
+        <para id="id8339801">
+          <code/>
+        </para>
+        <para id="id9249613">
+          <code>% This is the actual fixed-point iteration loop.</code>
+        </para>
+        <para id="id8718680">
+          <code>% for i = 1 : maxNumIterations + 1</code>
+        </para>
+        <para id="id4371611">
+          <code>i = 1;</code>
+        </para>
+        <para id="id3218064">
+          <code>gabba = 1;</code>
+        </para>
+        <para id="id7334477">
+          <code>while i &lt;= maxNumIterations + gabba</code>
+        </para>
+        <para id="id9259817">
+          <code>if (usedDisplay &gt; 0)</code>
+        </para>
+        <para id="id3230100">
+          <code>drawnow;</code>
+        </para>
+        <para id="id4068312">
+          <code>end</code>
+        </para>
+        <para id="id9130483">
+          <code/>
+        </para>
+        <para id="id9143497">
+          <code>% Project the vector into the space orthogonal to the space</code>
+        </para>
+        <para id="id8887517">
+          <code>% spanned by the earlier found basis vectors. Note that we can do</code>
+        </para>
+        <para id="id10257530">
+          <code>% the projection with matrix B, since the zero entries do not</code>
+        </para>
+        <para id="id10256766">
+          <code>% contribute to the projection.</code>
+        </para>
+        <para id="id9417820">
+          <code>w = w - B * B' * w;</code>
+        </para>
+        <para id="id6019394">
+          <code>w = w / norm(w);</code>
+        </para>
+        <para id="id3998921">
+          <code/>
+        </para>
+        <para id="id5187440">
+          <code>if notFine</code>
+        </para>
+        <para id="id9217123">
+          <code>if i == maxNumIterations + 1</code>
+        </para>
+        <para id="id8397564">
+          <code> if b_verbose</code>
+        </para>
+        <para id="id4678052">
+          <code> fprintf('\nComponent number %d did not converge in %d iterations.\n', round, maxNumIterations);</code>
+        </para>
+        <para id="id5817713">
+          <code> end</code>
+        </para>
+        <para id="id9568282">
+          <code> round = round - 1;</code>
+        </para>
+        <para id="id8897327">
+          <code> numFailures = numFailures + 1;</code>
+        </para>
+        <para id="id9135662">
+          <code> if numFailures &gt; failureLimit</code>
+        </para>
+        <para id="id8980377">
+          <code> if b_verbose</code>
+        </para>
+        <para id="id9286189">
+          <code> fprintf('Too many failures to converge (%d). Giving up.\n', numFailures);</code>
+        </para>
+        <para id="id3379009">
+          <code> end</code>
+        </para>
+        <para id="id9156936">
+          <code> if round == 0</code>
+        </para>
+        <para id="id6568123">
+          <code> A=[];</code>
+        </para>
+        <para id="id8690450">
+          <code> W=[];</code>
+        </para>
+        <para id="id9535262">
+          <code> end</code>
+        </para>
+        <para id="id8577726">
+          <code> return;</code>
+        </para>
+        <para id="id8722148">
+          <code> end</code>
+        </para>
+        <para id="id9140885">
+          <code> % numFailures &gt; failurelimit</code>
+        </para>
+        <para id="id9424166">
+          <code> break;</code>
+        </para>
+        <para id="id7334882">
+          <code/>
+        </para>
+        <para id="id3284592">This iteration will guess a row of the <emphasis>demixing</emphasis> matrix (w in the code) and then run through a loop until it finds a projection that agrees with the statistical analysis behind the decoding. </para>
+        <para id="id5030166">After running on the supplied mixed signals, the program will output what it thinks are the two original sources and the <emphasis>demixing</emphasis> matrix. We can then use these outputs to complete a variety of tasks such as removing noise from the original signals, matching the original signals with other signals to detect base elements of the mixed signal, or even just simply outputting the original signals through a speaker system.</para>
+      </section>
+    </section>
+  </content>
+</document>

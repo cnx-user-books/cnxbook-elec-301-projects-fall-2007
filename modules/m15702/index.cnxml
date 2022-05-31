@@ -1,0 +1,21 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Blind Source Separation Via ICA: Introduction and Background</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>ebaee3d0-bf4c-4347-a7ea-728ce7fae35b</md:uuid>
+</metadata>
+  <content>
+    <section id="id-111291254884">
+      <title>Blind Source Separation via ICA</title>
+      <section id="id-861978804301">
+        <title>Introduction and Background</title>
+        <para id="id10320422">Imagine you are driving in a car with the radio on and your friends talking in the backseat. You wish to make a phone call on your Blue-Tooth cell phone; however, the person on the other side of the line cannot distinguish what you are saying due to the background noise. A digital signal processing system can be developed to extract your voice signal from the rest of the noise and send it over to the cell phone tower. One such system capable of doing this is blind source separation. </para>
+        <para id="id9699319">In this project, we present an introduction to the implementation and study of blind source separation through independent component analysis (ICA). The aspiration of our project is to recover independent source signals given only sensor recordings composed of unknown linear combinations of the independent sources. Through ICA, we can successfully separate the two signals apart or extract a signal (i.e. a voice) from background noise (i.e. music). </para>
+        <figure id="id7373199">
+          <media id="idp6646528" alt=""><image src="../../media/graphics1-3dbf.png" mime-type="image/png" height="190" width="565"/></media>
+        </figure>
+        <para id="id10297063">Figure 1: This is a pictorial representation of the process described above.</para>
+        <para id="id8218215">ICA separates the signals using second-order statistics and reduces the higher order statistical dependencies in order to make the recovered separated signals as independent as possible. </para>
+        <para id="id5185834">Applying blind source separation via this method will enable many applications in signal processing such as audio or image separation, telecommunications, and medical signal processing.</para>
+      </section>
+    </section>
+  </content>
+</document>

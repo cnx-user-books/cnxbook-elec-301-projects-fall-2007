@@ -1,0 +1,27 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Filtering</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>f78e7905-11df-4061-8546-55ba0e187e7a</md:uuid>
+</metadata>
+  <content>
+    <section id="id-446608352977">
+      <title>Filtering</title>
+      <section id="id-812260271003">
+        <title>Overview</title>
+        <para id="id47515506">Although we have more contrast between our cell borders and the background, there is still a lot of noise which will need to be annihilated before edge detection can be successful. Ideally, we want to only preserve pixels which constitute a cell border and map all other pixels to a zero intensity. </para>
+      </section>
+      <section id="id-153491721828">
+        <title>Conversion to Gray Scale</title>
+        <para id="id48157606">Filtering is more easily done on a grayscale image than on a colormap image. This is due to the fact that grayscale images are intensity images with each pixel reflecting a particular intensity, rather than a combination of three colors (red, green and blue). With a grayscale image, filters such as mean and mode filters can be more appropriately applied.</para>
+      </section>
+      <section id="id-830480350337">
+        <title>Mean Filtering</title>
+        <para id="id48211000">The first step in getting rid of unwanted pixels is to apply a mean filter. This filter will take a specified neighborhood around each pixel and set each pixel to the mean of its neighborhood. This is done with Matlab’s sliding neighborhood operation which will go through each pixel, taking its neighborhood pixels as inputs into a specified function and set each pixel as the output of the function. </para>
+        <para id="id48276718">In our case, the function we want to apply will take the neighboring pixels and output the mean. This mean represents the average intensity of its neighboring pixels. Thus, a lone intense (lit) pixel way out in the boondocks will be set to zero since there are no other high-intensity pixels nearby. This will effectively eliminate lone high-intensity pixels and thus decrease noise. </para>
+        <para id="id48616729">Following mean filtering, the image was converted to black and white. This was done by specifying a threshold intensity and setting all pixels above the threshold to 1 (white) and all pixels below to 0 (black). Why must this be done? Well, you’ll just have to read on to see… Figure 1 shows our final result in this step after converting to black and white.</para>
+        <figure id="id48273401">
+          <media id="idm5318608" alt=""><image src="../../media/graphics1-9c90.png" mime-type="image/png" height="203" width="286"/></media>
+        </figure>
+      </section>
+    </section>
+  </content>
+</document>

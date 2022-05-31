@@ -1,0 +1,56 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Webcam Color Tracking in Matlab</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>9061fd10-2fec-426d-a107-8272eb37ab92</md:uuid>
+</metadata>
+  <content>
+    <section id="id-951929258472">
+      <title>Back ground: Image Processing in Matlab</title>
+      <section id="id-369428975491">
+        <title>What composes an image? </title>
+        <para id="id9827488">Each image is composed of an array of M*N pixels (contraction of “picture element”) with M rows and N columns of pixels. Each pixel contains a certain value for red, green and blue. Varying these values for red, green, blue (RGB) we can get almost any color. </para>
+        <figure id="id9928696"><title>Image Storage in Matlab</title>
+          <media id="idp5643232" alt=""><image src="../../media/graphics1-089a.jpg" mime-type="image/jpeg" height="450" width="600"/></media>
+        </figure>
+        
+      </section>
+      <section id="id-814018495546">
+        <title>Color Detection</title>
+        <para id="id9824850">The RGB format is a practical method to represent color images. Matlab creates three matrices (or three M x N arrays) with each matrix representing normalized components of red, green or blue to read and store each of the frames of the video. Any pixel’s color is determined by the combination of Red, Green and Blue values stored in the three matrices at that pixel’s location. This is how Matlab reads and manipulates .jpg files. </para>
+        <para id="id9098222">
+          <emphasis>Images:</emphasis>
+        </para>
+        <para id="id8599925">
+          <code>picture (row, column, rgb value)</code>
+        </para>
+        <para id="id9850234">For example, picture (12, 78, 1) corresponds to the red component of the pixel at row 12 and column 78; picture(12, 78, 2) corresponds to the green component of the pixel and picture(12, 78, 3) gives us the blue component of the pixel at that location. </para>
+        <para id="id9865232">
+          <emphasis>Videos:</emphasis>
+        </para>
+        <para id="id9822584">
+          <code>frames(row, column, rgb value, frame)</code>
+        </para>
+        <para id="id9900758">Videos have an extra dimension for the frame number. So frames(12,78,1,5) would correspond to the red component of the pixel in the 12th row and 78th column of the 5th frame. To get the entire frame, we could just say frames(:,:,:,5).</para>
+      </section>
+    </section>
+    <section id="id-7521330703">
+      <title>Acquiring Images From The Webcam in Matlab</title>
+      <figure id="id9828777"><title>Digitization of the Images</title>
+        <media id="idp4434256" alt=""><image src="../../media/graphics2-7d1e.jpg" mime-type="image/jpeg" height="192" width="599"/></media>
+      </figure>
+      <para id="id9928600">How you acquire the images from the camera depends a lot on what software you are using to implement it. Creating the interface between the computer and the drum using a lower level language like C or C++ will give you a lot of flexibility, but it will also involve a lot of work and background knowledge. Fortunately for us, Matlab’s Image Acquisition Toolbox has a variety of simple functions that can be used to create the interface. The next few paragraphs will describe these functions and how we used them in some detail.</para>
+      <para id="id6904336">For Matlab to recognize the video camera you have to create it as an object using the command <code>obj=videoinput(‘winvideo’)</code>. Matlab will automatically find the webcam connected to your computer. Once it is an object in your workspace you can edit its settings, such as the number of frames per second, to optimize it for your project. <code>preview()</code> and <code>getframe()</code> are two useful functions for determining if the camera has been positioned properly. The first allows you to see what the camera sees, without collecting any data from it, and the second acquires a single snapshot and stores it as in image.</para>
+      <para id="id6859940">Now we can start recording the video. With the <code>start(obj)</code> command, the camera will be triggered and will start to collect as many frames as specified by the <term>FramesPerTrigger</term> property. These frames are stored in the camera’s buffer memory. These frames are stored in the 4D array as described above.</para>
+      <para id="id8916388">To retrieve them from the buffer you could use either the <code>getdata()</code> function or the <code>peekdata()</code> function. </para>
+      <section id="id-138279403765">
+        <title>getdata(obj);</title>
+        <para id="id9606838">When this statement is encountered, the program retrieves all the frames acquired at the last trigger and then empties the buffer.</para>
+      </section>
+      <section id="id-375607586832">
+        <title>peekdata(obj,M);</title>
+        <para id="id9868556">This function allows us to “peek” at the last M frames collected by the camera. The frames are copied, but not cleared, from the camera’s buffer into Matlab’s workspace. </para>
+        <para id="id9828304">Both functions take about the same amount of time to run. Interestingly, the number of frames acquired at a time does not affect the execution time much. It takes about as long to acquire 1 frame as it does to acquire 50. Therefore, to make the program more efficient, we should collect large chunks of data at a time.</para>
+        <para id="id8727942">To make sure that we don’t miss any of the action while the user is waving the drumsticks around in front of the camera, we should also make sure that we can get all the frames from when the program starts running till the user turns of the LEDs. Due to memory limitations, our computer could collect maximum of 240 frames, or about 8 seconds of the video, which is clearly not enough. It is unlikely that your computer could do much better.</para>
+      </section>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,18 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Results</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>15de2697-62fa-4bdb-b440-b06109858319</md:uuid>
+</metadata>
+  <content>
+  
+      <para id="id3164722">Both the inverse filter and the vocal band filter performed well at improving the quality of the transmitted signal by compensating for the observed distortion and removing additive noise. The inverse filter successfully boosted the high frequencies that were absorbed by the window. The vocal band filter isolated the speech portion of the signal and successfully removed much of the noise produced by the low-frequency window vibrations. The spectrum of the filtered signal appears similar in shape to the human voice spectrum in the pass band.</para>
+
+    <section id="id-609972572918">
+      <title>Possible Improvements</title>
+      <para id="id11162626">In order to improve the quality of the recorded signal, we’d like to explore ways of improving the transmission process to get better results. One method that we conceived is to modulate the laser beam at its source with a carrier frequency. We could then demodulate the recorded signal digitally. In theory, this scheme could considerably reduce the amount of additive noise in the transmitted signal by moving the transmitted speech band away from the strong low-frequency noise and into the high-frequency range.</para>
+    </section>
+    <section id="id-990358694597">
+      <title>Conclusion</title>
+      <para id="id4543159">This project was an enjoyable experience for all the members in our group. We got to experiment with a technology that was new to us, and we got to learn a lot about digital speech processing. Overall we are proud of the project.</para>
+    </section>
+  </content>
+</document>

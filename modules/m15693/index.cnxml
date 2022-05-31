@@ -1,0 +1,34 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Conclusion</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>2efe8423-3e8b-496f-b949-bf3c3aa396b3</md:uuid>
+</metadata>
+  <content>
+    <section id="id-892405243651">
+      <title>Conclusion</title>
+      <section id="id-747800099866">
+        <title>Area Calculation</title>
+        <para id="id4046090">With the accumulation array, we were able to extrapolate the sizes of the individual cells and it was determined that the average cell size in our image is roughly 150um2. </para>
+        <section id="id-560584302156">
+          <title>But what does it all mean?</title>
+          <para id="id7452425">When imaging techniques become more advanced, it is our hope that not only would we be able to calculate the size of the cells, but the nucleus as well. By being able to calculate both the cell sizes as well as the nucleus, the ratio between the two can be determined. This can then be used as a completely non-invasive detector of cancer, with higher nucleus-to-cell ratios being indicative of the presence of cancer.</para>
+        </section>
+      </section>
+      <section id="id-838011530915">
+        <title>Improvements</title>
+        <para id="id6042698">Our area calculation is far from perfect and, with time, there are many improvements which can be made.</para>
+        <section id="id-350033258714">
+          <title>Image Acquisition</title>
+          <para id="id4702871">The image acquisition technique can be improved to not only be able to detect the nucleus, but to provide better definition between a cell’s border and the background as well. But… this we will leave to our bioengineering friends. </para>
+        </section>
+        <section id="id-733113880078">
+          <title>Edge Detection</title>
+          <para id="id4704790">In our edge detection phase, one problem we faced was the varying thickness of cell borders. Sometimes, especially thick borders would appear as a closed region resembling a cell when edge detection is performed! This problem, however, we believe can be rectified using carefully constructed filters which can hopefully reduce the thickness of borders.</para>
+        </section>
+        <section id="id-905608222453">
+          <title>Circle Detection</title>
+          <para id="id6672149">The Hough Transform we used approximates cell sizes using the approximate circles. Cells, however, are not always completely circular. A more generalized transform can be employed to more precisely detect the shape of the cells and give a more precise area calculation. </para>
+        </section>
+      </section>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,88 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Tomographic Processing</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>1fbc6e65-c0a8-44da-956e-67d3c8ebfb8d</md:uuid>
+</metadata>
+  <content>
+    <section id="id-452042906875">
+      <title>Data Processing</title>
+      <para id="id10862330">In the words of the highly esteemed Rich Baraniuk, the signals received by the radar sensor must be “munjed” upon in order that the user can learn anything useful at all. We flesh-out the basic spotlight-mode SAR derivation from start to finish, noting the places in which we make approximations, all the while aiming at interpreting our bit stream into the meaningful pieces of the Projection-Slice Theorem. Something to note is that this theoretical approach does not include any Doppler shift analysis. Other approaches to synthetic aperture radar heavily rely on phase data collected during a physical flyby of the target, where instrument velocity plays an important role. The mathematics in this section follows as in David Munson’s 1983 paper on “A Tomographic Formulation of Spotlight-Mode Synthetic Aperture Radar.”</para>
+      <section id="id-70492857259">
+        <title>The Setup</title>
+        <para id="id11718321">The way spotlight-mode SAR collects data samples is by gathering image projections from a range of angles. In our case, this range is broken down into a set of equally spaced angles so that essentially we have snapshots at various views around a target. A depiction of what it would look like is given below.</para>
+        <figure id="id9929390">
+          <media id="idp9970560" alt=""><image src="../../media/graphics1-d361.png" mime-type="image/png" height="349" width="466"/></media>
+        </figure>
+        <para id="id10290192">This drawing shows how the altitude of the sensor platform might play a role in the angular view of the target. For our derivation, we will ignore this parameter and assume that the radar is somehow incident at ground level, that as the sensor moves closer to the target distances remain undistorted by this variation in 3-dimensions. This ground plane geometry is as shown below.</para>
+        <figure id="id11104070">
+          <media id="idm9410864" alt=""><image src="../../media/graphics2-5806.png" mime-type="image/png" height="405" width="604"/></media>
+        </figure>
+        <para id="id7685758">Note that the angle <emphasis>theta</emphasis> is the same as that in the description of the Projection-Slice Theorem. The distance from the center of the target image is given by the variable <emphasis>R</emphasis>, and the radius of a circular target is given by <emphasis>L</emphasis>. The radar signal travels along and parallel to path <emphasis>u</emphasis>.</para>
+      </section>
+      <section id="id-512151346605">
+        <title>Generating the Reflection Signal</title>
+        <para id="id11268314">At this point we are ready to start generating our signals! Our radar device works in a microwave frequency range designed to penetrate clouds and other obstructions with ease. It emits a linear FM chirp pulse waveform <emphasis>Re{s(t)}</emphasis> where</para>
+        <figure id="id3472396">
+          <media id="idm3065568" alt=""><image src="../../media/graphics3-df09.png" mime-type="image/png" height="56" width="189"/></media>
+        </figure>
+        <para id="id10986191">In this signal, <emphasis>w0</emphasis> is the RF carrier frequency and <emphasis>2a</emphasis> is the FM rate. The frequency rises linearly with time so that the minimum frequency is <emphasis>w0-aT</emphasis> and the maximum is <emphasis>w0+aT</emphasis>. The point reflection off of a reflection coefficient at <emphasis>(x0,y0)</emphasis> given by <emphasis>g(x0,y0)</emphasis> can be written</para>
+        <figure id="id9094514">
+          <media id="idp4068688" alt=""><image src="../../media/graphics4-7a3a.png" mime-type="image/png" height="41" width="291"/></media>
+        </figure>
+        <para id="id9798230">Where <emphasis>R0</emphasis> is the distance of <emphasis>g(x0,y0)</emphasis> from the radar, A accounts for propagation attenuation, <emphasis>c</emphasis> is the speed of light, and <emphasis>2R0/c</emphasis> accounts for the two-way travel time from radar to target.</para>
+      </section>
+      <section id="id-186272993659">
+        <title>Interpreting the Reflection Signal</title>
+        <para id="id11181220">Points on the target ground patch equidistant from the radar lie on an arc, but typically <emphasis>R&gt;&gt;L</emphasis>, so this arc is nearly, and may be approximated as, a straight line. Combining this approximation with the polar formulation of a differential line of scatterers (radar reflectors), we can write down a new relation involving a polar representation of the reflection.</para>
+        <figure id="id11041892">
+          <media id="idp2210912" alt=""><image src="../../media/graphics5-8d5e.png" mime-type="image/png" height="42" width="305"/></media>
+        </figure>
+        <para id="id10594769">If <emphasis>R&gt;&gt;L</emphasis>, we may take <emphasis>A</emphasis> as a constant over <emphasis>u</emphasis>, and this enables us to write the reflection from the whole ground patch as the integral of <emphasis>r1</emphasis> over <emphasis>u</emphasis>.</para>
+        <figure id="id11130960">
+          <media id="idp10329408" alt=""><image src="../../media/graphics6-2eb7.png" mime-type="image/png" height="43" width="311"/></media>
+        </figure>
+        <para id="id10538891">This integral has the form of a convolution! This provides us a good hint that Fourier methods might be the right way to analyze this signal. The signal stated here is really the raw data that we receive from the radar. The return chirp is the projection slice convolved with the initial pulse.</para>
+      </section>
+      <section id="id-617891377879">
+        <title>Mixing the Reflection Signal</title>
+        <para id="id11463796">It turns out that the correct way to process this raw data is to mix it with the starting signal, <emphasis>s(t)</emphasis>. Written out, <emphasis>r(t)</emphasis> has the form</para>
+        <figure id="id11130461">
+          <media id="idp3067328" alt=""><image src="../../media/graphics7.png" mime-type="image/png" height="49" width="528"/></media>
+        </figure>
+        <figure id="id7914757">
+          <media id="idp9048512" alt=""><image src="../../media/graphics8.png" mime-type="image/png" height="39" width="252"/></media>
+        </figure>
+        <para id="id5637077">Mixing this signal with the real and imaginary parts of the signal <emphasis>s(t)</emphasis>, low-pass filtering the two, and then adding them together gives us a complex signal.</para>
+        <figure id="id10987436">
+          <media id="idm9494576" alt=""><image src="../../media/graphics9.png" mime-type="image/png" height="48" width="482"/></media>
+        </figure>
+        <para id="id4824171">The quadratic term in the exponential can be approximated as 0, and as that term disappears, we get a very profound result</para>
+        <figure id="id10994046">
+          <media id="idp4204720" alt=""><image src="../../media/graphics10.png" mime-type="image/png" height="48" width="381"/></media>
+        </figure>
+        <para id="id7688493">Which is the Fourier transform of <emphasis>p(t)</emphasis>.</para>
+        <figure id="id10437674">
+          <media id="idm2024224" alt=""><image src="../../media/graphics11.png" mime-type="image/png" height="48" width="256"/></media>
+        </figure>
+      </section>
+      <section id="id-584784460898">
+        <title>Interpreting Our Result</title>
+        <para id="id11463131">From our formulation of <emphasis>r(t)</emphasis> above, we know the restriction on <emphasis>t</emphasis>. If we consider the argument of <emphasis>P( )</emphasis> to be <emphasis>X</emphasis>, the radial spatial frequency, we know <emphasis>P(X)</emphasis> is only determined for <emphasis>X</emphasis> between <emphasis>X1</emphasis> and <emphasis>X2</emphasis> where</para>
+        <figure id="id11300307">
+          <media id="idm1246112" alt=""><image src="../../media/graphics12.png" mime-type="image/png" height="42" width="173"/></media>
+        </figure>
+        <figure id="id11813311">
+          <media id="idp715088" alt=""><image src="../../media/graphics13.png" mime-type="image/png" height="42" width="173"/></media>
+        </figure>
+        <para id="id11674531">The term <emphasis>4aL/c</emphasis> will be negligible for typical SAR, so we can see that <emphasis>X1</emphasis> and <emphasis>X2</emphasis> are proportional to the lowest and highest frequencies in the transmitted chirp pulse. <emphasis>X1</emphasis> and <emphasis>X2</emphasis> correspond to the inner and outer radii for which <emphasis>P(X)</emphasis> is defined.</para>
+        <figure id="id11273588">
+          <media id="idm3011872" alt=""><image src="../../media/graphics14.png" mime-type="image/png" height="35" width="217"/></media>
+        </figure>
+        <para id="id10973811"><emphasis>C(t)</emphasis> is the final form of the processed data! What this tells us is that after mixing the reflection with the real and imaginary parts of the original chirped pulse, low-pass filtering, and linearly combining the two, we are left with the Fourier transform of the projection <emphasis>p(t)</emphasis>. From here we need to take the inverse transform to finally reconstruct <emphasis>g(x,y)</emphasis>. Unfortunately, we have the polar form of a Fourier transform, whose known values would be located somewhere on this Locus</para>
+        <figure id="id9157921">
+          <media id="idp3017392" alt=""><image src="../../media/graphics15.png" mime-type="image/png" height="442" width="538"/></media>
+        </figure>
+        <para id="id11308673">There exists a 2-D polar inverse Fourier transform, and this is the preferred method of transform for the optimal quality reconstruction. This method, called Convolution Back-Projection, requires an enormous number of computations to execute, however, and so in practice one has to either have a quite powerful system or be ready to wait for results. The practical method attempts to remedy this issue by utilizing the Fast Fourier Transform, or FFT. Although there is no known 2-dimensional FFT or inverse FFT for polar coordinates, one may interpolate the polar data to rectify the coordinate system and then apply the 2-D inverse FFT in the regular fashion. The rectification process requires windowing the data, and interpolation is by its nature inexact, so this method ends up trading a great deal of resolution for extra speed.</para>
+      </section>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,15 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>iTunes Control Interface</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>42738dcd-649f-456a-8ace-86ac12f6fccc</md:uuid>
+</metadata>
+  <content>
+    <section id="id-215803800073">
+      <title>iTunes Control Interface</title>
+      <para id="id9194223">To accomplish anything useful with our signal processing, we need to drive an application. We chose iTunes, a popular multiplatform program for playing digital music files, as our example application for several reasons. First, the ability to control iTunes through external means is well documented and fairly simple to achieve. More important, however, is the aspect of music or audio playback in a room while simultaneously listening for whistles. </para>
+      <section id="id-001602335251">
+        <title>Java-COM</title>
+        <para id="id3731647">iTunes is both the system to control as well as the dominant source of noise to combat. Based on the profile of the whistle detected, whether it be increasing or decreasing in frequency, we will skip to the next or previous track in iTunes. To accomplish this, LabVIEW makes a call to a Java program that interacts with iTunes by accessing the Component Object Model (COM) interface of Windows. The <link url="http://danadler.com/jacob/">JACOB</link> library serves as an intermediary to complete this task. <link url="http://danadler.com/jacob/">JACOB</link> is a native Java-COM bridge, allowing Java programs to simultaneously run and interact with system applications. Once the COM interface receives instructions from LabVIEW, it then interacts with iTunes and changes tracks appropriately. </para>
+      </section>
+    </section>
+  </content>
+</document>

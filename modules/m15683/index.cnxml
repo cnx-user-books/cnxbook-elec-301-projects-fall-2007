@@ -1,0 +1,27 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Vocal Band Pass Filter</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>42a6996e-f151-4237-a4d3-71cd45a7e9b3</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">After the inverse filter, we decided to isolate the speech signal to remove some of the additive noise. We accomplished this by applying a band pass filter to the recorded signal. When filtering signals, it is very useful to have an understanding of where the important information in the signal lies. With a speech signal there are a few things that we can take advantage of when attempting to filter out noise.
+    </para><para id="element-614">Speech signals generally have a distinctive envelope in the frequency domain (pictured below). After our preliminary filters, we were able to use this envelope to check and see if our output matched.</para>
+
+  <figure id="idm1106240"><media id="idm7392" alt=""><image src="../../media/env.png" mime-type="image/png" height="542" width="638"/></media>
+
+<caption>
+Picture from "Speech Enhancement Theory and Practice" Philipos C. Loizou
+</caption>
+    </figure>
+
+
+
+<para id="element-558">Human speech exists within a finite frequency range. As we are trying to eliminate noise to create a more intelligible speech signal we can get rid of everything outside of this range. To do this we will use a band-pass filter. To get optimum intelligibility telephone companies will generally use a window from 300Hz-3600Hz. The military uses around 400Hz-2800Hz to get rid of more background noise. We used a band-pass filter that went from 400Hz-3600Hz. In order to efficiently design this filter to have linear phase and a finite impulse response, we utilized the Remez Exchange (or Parks McClellan) algorithm. We accomplished this in MATLAB, resulting in the frequency response shown below.</para> 
+<figure id="fig1"><title>Frequency Response of Bandpass Filter</title>
+  <media id="idm8944320" alt=""><image src="../../media/response.png" mime-type="image/png"/></media>
+
+</figure>
+
+  
+  </content>
+  
+</document>

@@ -1,0 +1,11 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Introduction</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>e4330122-14e9-4701-8345-16e606330680</md:uuid>
+</metadata>
+  <content>
+    
+    <para id="id5986634">Our project provides a setup for detecting sound remotely by reflecting a laser beam off a hard surface, usually a window. Any sound that is near a window causes the window to move, and this technology takes advantage of that. It allows sounds to be heard from very far away because the sound information travels using the light as a medium, instead of the pressure waves of sound, it attenuates much less quickly. Another interesting thing to note is that the sound information is traveling at the speed of light instead of the speed of sound, so the information arrives more quickly than it would in a normal situation. </para>
+    <para id="id6304076">As one might imagine, this has interesting surveillance applications. This technology is currently being used by the CIA and many other surveillance-related organizations to eavesdrop. However, the main difference is that they use phase detection and infrared lasers while we use amplitude detection and a ruby laser for cost purposes. The phase modulation is much more accurate and much less noise prone, but requires a more complicated setup and was also not the goal of our project. The infrared laser is also useful in real-world scenarios because of the fact that it is invisible; the ruby laser might cause the surveillance subject to realize that they are being watched.</para>
+        
+  </content>
+</document>

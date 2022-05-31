@@ -1,0 +1,29 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Connecting Lines</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>affde008-8ad6-472a-a5c5-b71ab0511a39</md:uuid>
+</metadata>
+  <content>
+    <section id="id-360088022428">
+      <title>Connecting the Lines</title>
+      <section id="id-0638011001318">
+        <title>Rationale</title>
+        <para id="id4741927">OK, so now we have a (relatively) clean image of the cell’s borders. Can we run an edge detector now you ask…? Hold your horses, Champ, we still have a ways to go… </para>
+        <para id="id3557229">Although it may make sense to run an edge detector at this point, seeing as we’ve got ourselves an image where the cell borders are definitely distinguishable, there is still a problem. Edge detectors look for changes in the gradient. Since our image was acquired utilizing optical fibers, our cell borders are not really solid lines quite yet; they are merely groups of small dots which, together, make up the cell borders. If an edge detector were utilized at this point, it would pick up each fiber optic probe, rather than the cell border we want. There no need to despair; there is a solution for all this! </para>
+      </section>
+      <section id="id-311747811538">
+        <title>Mode Filtering</title>
+        <para id="id4663014">Although it may not be as simple as those connect-the-dots books we’re used to, mode filtering can be an effective method of forming solid cell borders. The basic idea is this: if we used sliding neighborhood operations again, but rather than look for the mean, look for the mode, we may be able to connect all our little dots together! Why is this? Well, the mode filter we implemented works like this:</para>
+        <list list-type="enumerated" id="id4689500">
+          <item>Take a neighborhood of size [N M]</item>
+          <item>Find the mean of the entries in the matrix.</item>
+          <item>Since the image is in black and white, if the mean is greater than .5, then there are more ones, otherwise, there are more zeros. This is basically determining the mode of the neighborhood.</item>
+          <item>Thus, if the mode is 1, set the pixel to 1. If the mode is 0, set the pixel to 0. </item>
+        </list>
+        <para id="id4697382">How does this connect the lines? Think about this: we want to establish solid cell borders by turning ON the black pixels which are part of the cell’s border. Thus, we want to turn ON black pixels which are near groups of white pixels which make up the cell borders and keep black pixels which are not part of the cell borders (in areas with relatively few white pixels) OFF. Taking the mode of each pixel’s neighborhood will accomplish this since black pixels near large groups of white pixels will be turned on and the following image shows what begins to look like solid cell borders… (Figure 1)</para>
+        <figure id="id6049981">
+          <media id="idm6698896" alt=""><image src="../../media/Median_Filter.jpg" mime-type="image/jpeg" height="244" width="343"/></media>
+        </figure>
+      </section>
+    </section>
+  </content>
+</document>

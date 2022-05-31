@@ -1,0 +1,38 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Blind Source Separation Via ICA: The Team and Thanks</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>95c24aa9-3988-464e-9efc-e868458f2e3e</md:uuid>
+</metadata>
+  <content>
+    <section id="id-936725629279">
+      <title>Blind Source Separation via ICA</title>
+      <section id="id-241516643614">
+        <title>The Team and Thanks</title>
+        <para id="id7960922">
+<!--Empty sections are illegal in CNXML 0.5.  This empty paragraph is a place holder that added as a byproduct of the word importer.-->
+        </para>
+      </section>
+      <section id="id-432870091908">
+        <title>The Team</title>
+        <list list-type="bulleted" id="id8886474">
+          <item>Akshay Dayal, ECE Department, <link url="mailto:Akshay.Dayal@rice.edu">Akshay.Dayal@rice.edu</link></item>
+          <item>Mark Eastaway, ECE Department, <link url="mailto:Mark.Eastaway@rice.edu">Mark.Eastaway@rice.edu</link></item>
+          <item>Angela Qian, ECE Department, <link url="mailto:Angela.Qian@rice.edu">Angela.Qian@rice.edu</link></item>
+          <item>John Steinbauer, ECE Department, <link url="mailto:John.J.Steinbauer@rice.edu">John.J.Steinbauer@rice.edu</link></item>
+        </list>
+        <section id="id-538393264871">
+          <title>Thanks and Recognition</title>
+          <para id="id8836311">The team would also like to thank Professor Richard Barniuk and Mark Davenport, who helped jumpstart us on our project. We also would like to thank Michael Dye and the Rice University ERC for providing the microphone hardware we used to implement our project. </para>
+          <para id="id4721456">References</para>
+          <list list-type="bulleted" id="id7528953">
+            <item>Gävert, H., Hurri, J., Särelä, J., and Hyvärinen, A. (2005). <link url="http://www.cis.hut.fi/projects/ica/fastica/">The FastICA Package for MATLAB</link>. Free Software Foundation. </item>
+            <item>Hyvarinen, A. and Erkki, O.(2000). <link url="file:///var/local/word-harvest/good/4.%09http:/www.cvmt.aau.dk/education/teaching/f05/INF6/Feature/ICAintroduktion.pdf">Independent Component Analysis: Algorithms and Applications</link>. Neural Networks, 13(4-5): 411-430. </item>
+            <item>Cichocki, A. (2004). Blind Signal Processing Methods for AnalyzingMultichannel Brain Signals. International Journal of Bioelectromagnetism<link url="http://ijbem.k.hosei.ac.jp/volume6/number1/index.htm">2004, Vol. 6, No. 1</link>. </item>
+            <item>Jourjine, A., Rickard, S., Yilmaz, O. (2000). Blind Separation of Disjoint Orthogonal Signals: Demixing N Sources from 2 Mixtures. IEEE. </item>
+            <item>Fiori, S. (1999). Entrophy Optimization by the PFANN Network: Application to Blind Source Separation. Network: Cornput. Neural Syst. 10 171-186. </item>
+            <item>Meyer-Base, A., Gruber, P., Theis, F., and Foo, S. (2005). Blind Source Separation Based on Self-Organizing Neural Network. Science Direct. </item>
+          </list>
+        </section>
+      </section>
+    </section>
+  </content>
+</document>

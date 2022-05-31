@@ -1,0 +1,13 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Introduction</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>2e0bf42e-9abb-4b31-bbf9-9626ab1403ee</md:uuid>
+</metadata>
+  <content>
+    <section id="id-968460280645">
+      <title>Introduction</title>
+      <para id="id7024242">As personal computer applications become increasingly complex and personal computers themselves become increasingly powerful multi-process machines, the issue of application control becomes an important issue. While the keyboard and mouse previously reigned as the de facto computer inputs, the capability of today's computers to do fast, adaptive signal analysis gives way to new and exciting control opportunities. </para>
+      <para id="id8014172">Most computers are equipped with basic microphones. Though the idea of spoken word or sound control is not a new idea, most voice control systems require complex algorithms to filter noise and account for the many differences between peoples' voices. Our project takes advantage of the simple frequency patterns in whistles in order to simplify this process. </para>
+      <para id="id7350512">To handle signal processing, we chose to utilize the features of the popular LabView development environment. Combined with the powerful Java programming platform, we are able to send control commands in order to drive an application, which in our case was iTunes. In the scope of our project, LabView instantiates a Java control program which then passes commands onto iTunes. </para>
+    </section>
+  </content>
+</document>

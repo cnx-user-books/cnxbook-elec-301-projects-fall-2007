@@ -1,0 +1,32 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Secondary Detection Methods for Laugh Tracks</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a6e6900a-da15-48da-9ba7-a041b98816f8</md:uuid>
+</metadata>
+  <content>
+    <section id="id-719609418412">
+      <title>Introduction</title>
+      <para id="id2694058">In this module, some of the more exotic detection methods considered for our laugh track removal system are discussed. In particular, a detection method using polynomial curve fitting in conjunction with support vector machines.</para>
+    </section>
+    <section id="id-0188425421744">
+      <title>Support Vector Machine (SVM)/Polynomial Curve Fitting</title>
+      <para id="id2813167">As previously discussed in the <link document="m15644">Anatomy of a Laugh Track</link> module, laugh tracks have a characteristic shape in the time domain. In order to take advantage of this fact, one detection method we considered involved using support vector machines and polynomial curve fitting to detect laughs. Given the unique shape of a laugh track, one ought to be able to consistently fit the same polynomial curve onto a signal representing a laugh. This curve can then be completely characterized in terms of its coefficients. By then building a database of positive and negative examples of polynomial coefficients, and training a support vector machine on this data, we ought to then be able to produce a fast detection scheme for laughs. </para>
+    </section>
+    <section id="id-106054427531">
+      <title>What are support vector machines?</title>
+      <para id="id2957429">Support vector machines are a relatively new technique for partitioning high dimensional datasets into classes. At the simplest level, a SVM divides a high dimensional dataset using hyper-planes. These divisions can then be completely characterized in terms of the data points – called support vectors – that are closest to the hyper-plane of the division. In this way an enormously complex dataset can be partitioned, and more importantly, these partitions are easy to describe. Once a training dataset is partitioned, new points can be classified by checking into which partition the point falls. Further complexity can be introduced by switching from hyper-planes to other curves for partitioning a dataset. Common curves include polynomials, sigmoids, and radial basis functions. More information about support vector machines can be found at <link url="http://www.kernel-machines.org/">www.kernel-machines.org</link>.</para>
+    </section>
+    <section id="id-768884784573">
+      <title>Polynomial Curve Fitting</title>
+      <para id="id2841106">Not to be confused with the polynomial curve potentially used by a SVM, we experimented using polynomial curve fitting to characterize the shape of a laugh track. After experimenting with a handful of potential curves, we chose the degree 9 polynomial as the best curve to use for fitting based on the low error, quick fitting, and high dimension. The high dimension is important, because the power of SVMs becomes most readily apparent in high dimensional space. In this case, our data consisted of 11 dimensional vectors: 9 dimensions from the coefficients of a fitted polynomial plus the duration of the audio segment in question, and the error of the fitted curve. </para>
+    </section>
+    <section id="id-746826521927">
+      <title>Implementation</title>
+      <para id="id2747522">In order to detect laugh tracks, we first divided the audio stream into smaller segments which we then approximated with a polynomial curve and stored into a database for use in a SVM training regime. Observation revealed that the shortest laugh track is approximately 1 second long. To generate our dataset, we considered audio segments spaced slightly apart (0.25 to 0.33 seconds) of at least 1 second in duration. Having fit a curve to the 1 second segment, we then examined a segment slightly longer. If the error of approximation of the longer segment was better, then we considered an even long segment, until an optimal segment was found. The coefficients of the polynomial which was fit, the duration, the error, and the classification (laugh, not laugh), were then stored into a dataset. </para>
+      <para id="id2710334">Having built a sufficiently large training dataset, we then trained a support vector machine (<cite url="http://www.csie.ntu.edu.tw/~cjlin/libsvm/"><cite-title>LIBSVM</cite-title></cite>). Experimentation with parameters showed that the radial basis kernel produced the best results. New audio segments were then classified according to the partitions generated.</para>
+    </section>
+    <section id="id-983295499898">
+      <title>Results and Analysis</title>
+      <para id="id2883633">Overall, the results of this detection method were reasonable, although not ideal. In particular, a 70% detection rate was achieved. Further analysis revealed several factors limited the effectiveness of this method. First, the large number of negative to positive examples heavily skewed the dataset. Experiments showed that results are exceedingly sensitive to parameter selection due to this fact. Second, a large amount of human error existed in the dataset. The training dataset had to be constructed by hand, and variability as to what did and did not qualify as a laugh introduced error. Finally, it is questionable as to how suitable polynomial coefficients are for classifying shape. Coefficient values do not necessarily encode shape characteristics such as duration, slope, and amplitude directly, and as such classification along these lines may be difficult. In sum, this detection method was reasonable, but produced results that were worse than other, simpler methods.</para>
+    </section>
+  </content>
+</document>

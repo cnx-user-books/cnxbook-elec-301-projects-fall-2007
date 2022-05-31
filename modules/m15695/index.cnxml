@@ -1,0 +1,25 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>A General Approach to Building Your Own Virtual Drum Kit</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>737842e4-ca8a-4ffa-85fb-92a36e3f017a</md:uuid>
+</metadata>
+  <content>
+    <section id="id-657642048122">
+      <title>Flow Chart</title>
+      <figure id="id10983052">
+        <media id="idp4885968" alt=""><image src="../../media/graphics1-332b.jpg" mime-type="image/jpeg" height="652" width="366"/></media>
+      </figure>
+    </section>
+    <section id="id-756018090683">
+      <title>The LED Drum Sticks</title>
+      <figure id="id8224083">
+        <media id="idp10696064" alt=""><image src="../../media/graphics2-0cc4.jpg" mime-type="image/jpeg" height="313" width="404"/></media>
+      </figure>
+      <para id="id3922200">The LED drumsticks consist of a simple LED circuit mounted on narrow pipes. Instead of using a battery holder and a switch, we attached a pen flashlight to the circuit. The program also requires that one of the LEDs be red, and the other green. The circuit consisted of a super-bright LED, 9.11 ohm of resistance and a 3 V source. A lower resistance will make the LED brighter, making its detection better. Alternatively, the user can obtain LED sticks on the internet for $5 each. When the switch at the end of the flashlight is turned on, the LEDs will light up and serve as detection points of the drumsticks. The program stops running if you switch off the LED drum sticks. </para>
+      <para id="id3395406">The only limitation posed by the LED drumsticks is that they have to be used in a dimly lit area to be detected without errors.</para>
+      <para id="id11269905">Now that you have your drumsticks, you are all set on the hardware and need to implement the software!</para>
+      <figure id="id9433174">
+        <media id="idp6020400" alt=""><image src="../../media/graphics3-fb40.jpg" mime-type="image/jpeg" height="251" width="368"/></media>
+      </figure>
+    </section>
+  </content>
+</document>

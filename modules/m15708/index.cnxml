@@ -1,0 +1,144 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Blind Source Separation Via ICA: Math Behind Method</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>c9f7a2e1-1eed-4219-a4e5-3ae473cb2e9f</md:uuid>
+</metadata>
+  <content>
+    <section id="id-121656961379">
+      <title>The Math of ICA</title>
+      <para id="id10928763">The Independent Components Analysis algorithm allows two source signals to be separated from two mixed signals using statistical principles of independence and nongaussianity.</para>
+      <section id="id-084906716877">
+        <title>Defining the Problem</title>
+        <para id="id8865079">ICA assumes that the value of each source at any given time is a random variable. It also assumes that each source is statistically independent, meaning that the values of one source cannot be correlated to values in any of the other sources.</para>
+        <para id="id9527187">With these assumptions, ICA allows us to separate source signals from mixtures of these source signals. The algorithm requires that there be as many sensors as input signals. For example, with three independent sources and three mixtures being recorded, the problem could be modeled as:</para>
+        <equation id="element-199"><m:math display="block">
+  <m:mtable columnalign="left">
+    <m:mtr>
+      <m:mtd>
+        <m:msub>
+          <m:mi>x</m:mi>
+          <m:mn>1</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>=</m:mo>
+        <m:mi>a</m:mi>
+        <m:msub>
+          <m:mi>s</m:mi>
+          <m:mn>1</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>+</m:mo>
+        <m:mi>b</m:mi>
+        <m:msub>
+          <m:mi>s</m:mi>
+          <m:mn>2</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:msub>
+          <m:mi>x</m:mi>
+          <m:mn>2</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>=</m:mo>
+        <m:mi>c</m:mi>
+        <m:msub>
+          <m:mi>s</m:mi>
+          <m:mn>1</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>+</m:mo>
+        <m:mi>d</m:mi>
+        <m:msub>
+          <m:mi>s</m:mi>
+          <m:mn>2</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math></equation><para id="id6089418">Using matrix notation, the problem can be generalized to any number of mixtures. For some number of sources n to be identified, n mixtures would need to be recorded.</para>
+        <equation id="element-937"><m:math display="block">
+  <m:mrow>
+    <m:mi>x</m:mi>
+    <m:mo>=</m:mo>
+    <m:mi>A</m:mi>
+    <m:mi>s</m:mi>
+  </m:mrow>
+</m:math>
+</equation>
+        <para id="id10574811">The goal of blind source separation using ICA is to invert this procedure; that is, given the mixtures <emphasis>x</emphasis> as inputs, ICA finds <emphasis>s</emphasis>. Because the mixing matrix <emphasis>A</emphasis> is square, we can write the reverse procedure as</para>
+        <equation id="element-297"><m:math display="block">
+  <m:mrow>
+    <m:mi>x</m:mi>
+    <m:mo>=</m:mo>
+    <m:msup>
+      <m:mi>A</m:mi>
+      <m:mrow>
+        <m:mo>-</m:mo>
+        <m:mn>1</m:mn>
+      </m:mrow>
+    </m:msup>
+    <m:mi>s</m:mi>
+  </m:mrow>
+</m:math>
+</equation>
+        <para id="id10293929">or, if we define <emphasis>W</emphasis> to be equal to the inverse of <emphasis>A</emphasis>,</para>
+        <equation id="element-840"><m:math display="block">
+  <m:mrow>
+    <m:mi>x</m:mi>
+    <m:mo>=</m:mo>
+    <m:mi>W</m:mi>
+    <m:mi>s</m:mi>
+  </m:mrow>
+</m:math>
+</equation>
+        <para id="id11119227">is an equivalent expression of the problem at hand.</para>
+      </section>
+      <section id="id-415096788349">
+        <title>Isolating the Independent Sources</title>
+        <para id="id10132322">The Central Limit Theorem provides the key to unlocking the mystery matrix <emphasis>W</emphasis>. The central limit theorem says that a sum of independent random variables can be approximated by a normal curve. The greater the number of variables summed, the more normal, or gaussian, the distribution. Since each of the mixtures being received by the sensors represents a linear combination of samples from each source in <emphasis>s</emphasis>, the distribution of the mixed signals is more gaussian than either of the two independent sources (by the central limit theorem).</para>
+        <para id="id9477144">In order for the ICA algorithm to use this principle, the algorithm needs a way of determining how gaussian a particular signal is. There are two main quantitative measures of nongaussianity. The first of these measures is kurtosis, which measures the “spikiness” of a signal. Kurtosis is 0 for gaussian random variables, positive for random variables that are more spiky than gaussian variables, and negative for random variables that are flatter than gaussian variables. The second measure is negentropy, which measures the “simplicity” of a signal. Negentropy is also 0 for gaussian random variables. </para>
+        
+        
+        <para id="id11108160">The FastICA package that we used for our project uses both of these measures of nongaussianity to identify independent source signals. It begins by guessing a row of the matrix <emphasis>W</emphasis>, which we can call <emphasis>w</emphasis>. This row represents the weighting coefficients for finding one of the original source signals. It then measures the nongaussianity of the proposed independent source defined by its guess of <emphasis>w</emphasis>, and finds the gradient of nongaussianity in an n-dimensional space to determine how the coefficients in <emphasis>w</emphasis> should change. It then uses a projection of the gradient to create a new guess of the coefficients in <emphasis>w</emphasis>, and continues in a cycle until the coefficients converge on certain values. Once this occurs, the resulting independent source is as nongaussian as it can be. This in turn means that it is the furthest the algorithm could get from the source being a sum, which means that one of the independent sources has been isolated.</para>
+        <para id="id10303830">The algorithm repeats this process for finding all the rest of the independent sources, taking care not to find the same source twice.</para>
+      </section>
+      <section id="id-508862769294">
+        <title>Ambiguities and Limitations</title>
+        <para id="id10191743">Just by examining the statement of the problem at the beginning of this module, two significant ambiguities arise in the ICA algorithm.</para>
+        <section id="id-371436903146">
+          <title>Indeterminate Energy</title>
+          <para id="id8664397">Because a scalar multiplier could be pulled out of <emphasis>s</emphasis> and multiplied to <emphasis>A</emphasis> with no change in the above equations, the ICA algorithm cannot determine the energy contained in any of the independent sources it finds. The amplitudes it gives the output components are arbitrary, and the true source signal could be one the isolated sources multiplied by any scalar multiple. This includes a negative multiple, which means that often, the output signals are also inversions of the original signals.</para>
+          <para id="id10635872">The seriousness of this ambiguity depends on the application. For sound signals, inversions are irrelevant because the only important part of the signal is the different between voltages, not the polarity. Gain can also be added on to sound systems to deal with the amplitude ambiguity. In other applications, such as image processing, the inability to distinguish energy is much more significant.</para>
+        </section>
+        <section id="id-235293476172">
+          <title>Order Ambiguity</title>
+          <para id="id9203197">Because the algorithm chooses coefficients of <emphasis>w</emphasis> at random when it searches for the sources, the isolated sources that the algorithm finds can come out in any order. So, it would take some additional processing to determine which independent sources is the one of interest to you.</para>
+        </section>
+        <section id="id-910017284746">
+          <title>Under-Determination</title>
+          <para id="id9251094">There <foreign>must</foreign> be as many sensors as there are sources in order to properly isolate the sources. If there are not enough sensors, the resulting signals will not match any of the sources, but rather will still be mixtures of multiple sources.</para>
+        </section>
+        <section id="id-0863145020455">
+          <title>Under-Determination</title>
+          <para id="id9545250">ICA can only handle linear mixtures that can be represented in the form <emphasis>x</emphasis> = <emphasis>As</emphasis>. The algorithm cannot accurately guess the independent sources if the sources are out of phase in the mixtures or if the mixtures have other nonlinear features.</para>
+        </section>
+      </section>
+    </section>
+  </content>
+</document>

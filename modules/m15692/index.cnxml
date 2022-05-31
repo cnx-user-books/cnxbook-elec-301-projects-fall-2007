@@ -1,0 +1,27 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Hough Transform</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>1b743a2d-6d9a-4a8d-8c3e-a00a4f88d198</md:uuid>
+</metadata>
+  <content>
+    <section id="id-103439530211">
+      <title>And now, Introducing the Hough Transform…</title>
+      <para id="id7722132">We are finally about to get to the fun part: circle detection…</para>
+      <section id="id-388993624502">
+        <title>The Hough Transform</title>
+        <para id="id11647432">The Hough Transform is performed to recognize circular patterns based on parameters such as circle radius range, gradient threshold and presence of concentric circles. The Hough Transform will in as an input a range of radii. It will then generate circles of varying radii which cover the entire range. These circles are convolved with the image and the goodness of match is recorded in an accumulation array. </para>
+        <para id="id8810377">Note: Generally, convolution is not performed, but rather, the FFTs are taken and multiplied together. This is not only more efficient, but more easily implemented as well!</para>
+        <para id="id12092731">We found a nifty Matlab function which implements the transform and ran it on our image. The accumulation graph can be seen below, with the peaks corresponding to the best circle matches.</para>
+        <figure id="id9333097">
+          <media id="idp8050176" alt=""><image src="../../media/3-D_Array.jpg" mime-type="image/jpeg" height="290" width="387"/></media>
+        </figure>
+      </section>
+      <section id="id-679643308501">
+        <title>Circles, Circles, Circles!</title>
+        <para id="id8662984">With the circles detected, the areas where the best circular matches were can be drawn out in our original image. The result is quite striking: of the twelve or so cells which could be picked out by the human eye, the Hough Transform was able to detect roughly eight cells. </para>
+        <figure id="id11748417">
+          <media id="idp9099552" alt=""><image src="../../media/Hough_Transform.jpg" mime-type="image/jpeg" height="284" width="378"/></media>
+        </figure>
+      </section>
+    </section>
+  </content>
+</document>

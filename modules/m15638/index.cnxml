@@ -1,0 +1,38 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Blind Source Separation Via ICA: Methods and Trials</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>71813de5-680b-432a-9aca-8a3e9305294b</md:uuid>
+</metadata>
+  <content>
+    <section id="id-379005498265">
+      <title>Blind Source Separation Via ICA: Methods and Trials </title>
+      <section id="id-973405213816">
+        <title>Methods and Trials</title>
+        <para id="id4735938">During our implementation stage we attempted several different methods for blind source separation. We came up with a plan for our initial goal: to have a working real-time system; our fallback was to have preprocessed recordings and play them as .wav files during our presentation. As is the case with many projects, we ran into some problems that we were not expecting. We were forced to identify the problems and adapt to seek new manners in which to perform blind source separation. We ran many trials with a total of four different methods.</para>
+        <section id="id-448495395415">
+          <title>First Trial</title>
+          <para id="id4735912">We began our first trial with the intent to gain a better understanding of the <emphasis>Matlab</emphasis> code as well as get a feel for the recording process. Shortly after beginning, we ran into our first problem: <emphasis>Windows</emphasis> operating system only recognizes one microphone input. Before buying software to overcome this, we looked for solutions using two laptops. </para>
+          <para id="id4735761">Our system included an operator, who started recording on both laptops at the same time, two microphones connected to the mono input of each laptop, as well as two speakers talking in different places in the room. We used <emphasis>Audacity</emphasis> to record and convert the microphone inputs to .wav files. <emphasis>Matlab </emphasis>was used to trim the two recordings to the same size and run them through FASTICA.m. </para>
+          <para id="id4735454">The two decoded signals were very noisy. There were also remnants of the other speaker in each of the two decoded signals. After trying different rooms, different levels of noise, different types of microphones (mono and stereo), different speakers, and different locations of speakers and microphones, we could not eliminate these imperfections. We were not happy with these results so we decided to try a different method.</para>
+        </section>
+        <section id="id-907796069983">
+          <title>Second Trial</title>
+          <para id="id5244886">In our second trial, we aimed to eliminate the noise and remnants of the other speaker in our decoded signals. We attributed these problems to our signals being asynchronous. In order to solve this problem, we sought a method to record simultaneously on one computer. Using <emphasis>Garageband</emphasis> on a Mac, we recorded two microphone inputs onto the two channels of a stereo recording. We converted the file to a .wav file and separated the two channels in Matlab. </para>
+          <para id="id4713946">After running the two signals through the <emphasis>Matlab</emphasis> code, we encountered the same problems (noise and other speaker interference). We tested while changing all the variables as in our first trial and received similar results. This could have been from <emphasis>Garageband</emphasis>’s method of recording to separate channels on stereo.</para>
+        </section>
+        <section id="id-348984601076">
+          <title>Third Trial</title>
+          <para id="id4735291">For our third trial, we implemented nearly the same system as the second trial. We were mainly testing to observe if <emphasis>Labview </emphasis>would have better results using the method of saving to separate .wav files instead of separate stereo channels.</para>
+          <para id="id4735305">We wrote the following <emphasis>Labview </emphasis>module:</para>
+          <figure id="id4714748">
+            <media id="idm5700592" alt=""><image src="../../media/graphics1-a7df.jpg" mime-type="image/jpeg" height="422" width="390"/></media>
+          </figure>
+          <para id="id4714770">Our results were the same as the first two trials. With this method, it seemed as though it would not be possible to have the recordings asynchronous, but we were still receiving the same problems. This could be either due to limitations in our recording equipment, or due to nonlinear combinations of the signal.</para>
+        </section>
+        <section id="id-291347587133">
+          <title>Fourth Trial</title>
+          <para id="id4733535">In our final trial, we recorded two signals separately using <emphasis>Audacity</emphasis> and one microphone input in a quiet room. We manually combined these signals linearly in <emphasis>Matlab</emphasis> and after running the combined signals through our code, finally achieved a near perfect separation of the two signals. We concluded that our issues in the first three trials were not due to phasing (eliminated in third trial), but were in fact due to non linear combinations of the signals, and also possibly to under determination caused by room noise being the third input. We saved these recordings to use in our presentation as this process is too tedious to perform in a real time demonstration. </para>
+        </section>
+      </section>
+    </section>
+  </content>
+</document>

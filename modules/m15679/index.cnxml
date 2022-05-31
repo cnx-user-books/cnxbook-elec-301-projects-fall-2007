@@ -1,0 +1,38 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Implementation</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>5bc4effe-7c98-48b7-bcc2-db493829a0ac</md:uuid>
+</metadata>
+  <content>
+    <para id="id10958591">The hardware implementation of the Laser Microphone is relatively simple and can be done at a minimal cost. </para>
+    <figure id="id11527308"><media id="idp624608" alt=""><image src="../../media/pic.png" mime-type="image/png" height="282" width="602"/></media>
+    </figure>
+
+<section id="one">
+  <title>Laser/Photodetector:</title> 
+
+
+
+    <para id="id12213300">The laser we used was a simple presentation laser pointer that outputted a red beam at approximately a 650nm wavelength. To receive the signal, we used a low cost photodetector (TSL12s), which is simply a photodiode and a trans-impedance amplifier combined together in a single package. The peak of the photodetector’s spectral response characteristics coincide with the output wavelength of the laser pointer. </para>
+    <figure id="id11213864"><media id="idm444736" alt=""><image src="../../media/graphics2-2f0d.png" mime-type="image/png" height="240" width="243"/></media>
+    </figure>
+</section>
+
+<section id="two">
+  <title>Detection Unit:</title> 
+    <para id="id4796477">The laser capture setup was a cardboard tube with a small hole in one end for a photodetector in order to obstruct as much ambient light as possible. A power supply was used to create the 5 volt supply voltage for the photodetector and a spliced 1/8” phono jack connecter was connected to the outputted signal. </para>
+
+  <figure id="id115234234"><media id="idm10059008" alt=""><image src="../../media/Setup.png" mime-type="image/png" height="477" width="635"/></media>
+    </figure>
+
+
+
+
+
+</section>
+
+    <section id="three">
+  <title>DAC:</title> 
+    <para id="id10468571">The Digital to Analog converter that we use to digitize the signal for further software processing is the mic-in jack on a laptop. Using this 22.05 kHz DAC, we are able to cheaply and properly sample the 3.6 kHz speech signal while following the Nyquist criterion and thus avoid any aliasing effects. </para>
+</section>
+  </content>
+</document>

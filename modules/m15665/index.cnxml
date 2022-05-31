@@ -1,0 +1,248 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Appendix and References</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>73df485d-3dd1-4a1a-994e-1e514faf7d3c</md:uuid>
+</metadata>
+  <content>
+    <section id="id-242226719783">
+      <title>Appendix</title>
+      <para id="id11260323">
+        <code/>
+      </para>
+      <section id="id-604529346946">
+        <title>MATLAB Function for Processing SAR Data</title>
+        <para id="id9800474">
+          <code/>
+        </para>
+        <para id="id11131258">
+          <code/>
+        </para>
+        <para id="id9410165">
+          <code/>
+        </para>
+        <para id="id7681391">
+          <code>function img = sar_lin(f,az_lin,iq_lin)</code>
+        </para>
+        <para id="id8522009">
+          <code/>
+        </para>
+        <para id="id8843100">
+          <code/>
+        </para>
+        <para id="id8548831">
+          <code>% INITIALIZATION</code>
+        </para>
+        <para id="id8302298">
+          <code/>
+        </para>
+        <para id="id9564392">
+          <code>R=4*pi*f/3e8;% Transformation of Time Freqeuncy to Spatial Frequency</code>
+        </para>
+        <para id="id9175182">
+          <code>A=pi/180*az_lin;% Transformation of Angle in degree to radians</code>
+        </para>
+        <para id="id10312386">
+          <code>for j=1:147</code>
+        </para>
+        <para id="id7378485">
+          <code>A(j)=A(j)-2*pi;% Adjustment so that all angular values are between 0 and pi</code>
+        </para>
+        <para id="id8756951">
+          <code>end</code>
+        </para>
+        <para id="id9121040">
+          <code/>
+        </para>
+        <para id="id10473411">
+          <code>% Initialization of Cartesian Grid</code>
+        </para>
+        <para id="id8559580">
+          <code>X=zeros(1,175);</code>
+        </para>
+        <para id="id9119829">
+          <code>Y=zeros(175,1);</code>
+        </para>
+        <para id="id11261332">
+          <code>for j=1:175</code>
+        </para>
+        <para id="id9342034">
+          <code>X(j)=208+(j-1);</code>
+        </para>
+        <para id="id8912504">
+          <code>Y(j)=208+(j-1);</code>
+        </para>
+        <para id="id8037149">
+          <code>end</code>
+        </para>
+        <para id="id10435120">
+          <code/>
+        </para>
+        <para id="id11340265">
+          <code>val=zeros(175);% Initialize the matrix of values in the cartesian grid.</code>
+        </para>
+        <para id="id11131034">
+          <code/>
+        </para>
+        <para id="id8725005">
+          <code/>
+        </para>
+        <para id="id9930614">
+          <code/>
+        </para>
+        <para id="id11260194">
+          <code/>
+        </para>
+        <para id="id8911163">
+          <code>% INTERPOLATOR</code>
+        </para>
+        <para id="id7322046">
+          <code/>
+        </para>
+        <para id="id10411055">
+          <code>for j=1:175</code>
+        </para>
+        <para id="id9168530">
+          <code/>
+        </para>
+        <para id="id9657892">
+          <code>j % Update on how far we are.</code>
+        </para>
+        <para id="id7482286">
+          <code/>
+        </para>
+        <para id="id9023490">
+          <code>for k=1:175</code>
+        </para>
+        <para id="id9642575">
+          <code/>
+        </para>
+        <para id="id9352638">
+          <code>r=sqrt(X(j)^2+Y(k)^2);</code>
+        </para>
+        <para id="id7642104">
+          <code>a=atan(Y(k)/X(k));</code>
+        </para>
+        <para id="id8404645">
+          <code/>
+        </para>
+        <para id="id9657940">
+          <code>if (r&gt;R(1) &amp; r&lt;R(512))</code>
+        </para>
+        <para id="id11260786">
+          <code/>
+        </para>
+        <para id="id9891124">
+          <code>% Data index of cartesian point</code>
+        </para>
+        <para id="id10362581">
+          <code>J=ceil((r-R(1))*511/(R(512)-R(1)));</code>
+        </para>
+        <para id="id9606573">
+          <code>K=ceil((a-A(1))*1540/(A(1541)-A(1))); </code>
+        </para>
+        <para id="id10263103">
+          <code/>
+        </para>
+        <para id="id9705102">
+          <code>% Linearly interpolate the cartesian point with its 4 nearest neighbor polar data points.</code>
+        </para>
+        <para id="id10476523">
+          <code/>
+        </para>
+        <para id="id7302746">
+          <code>% Interpolate in R</code>
+        </para>
+        <para id="id10284671">
+          <code>v0 = 1/(R(J+1)-R(J)) * ( iq_lin(J,K)*(R(J+1)-r) + iq_lin(J+1,K)*(r-R(J)) );</code>
+        </para>
+        <para id="id5293324">
+          <code>v1 = 1/(R(J+1)-R(J)) * ( iq_lin(J,K+1)*(R(J+1)-r) + iq_lin(J+1,K+1)*(r-R(J)) );</code>
+        </para>
+        <para id="id9507640">
+          <code/>
+        </para>
+        <para id="id8912168">
+          <code>% Interpolate in THETA</code>
+        </para>
+        <para id="id10814034">
+          <code>val(j,k) = 1/(A(K+1)-A(K)) * ( v0*(A(K+1)-a) + v1*(a-A(K)) );</code>
+        </para>
+        <para id="id10436069">
+          <code/>
+        </para>
+        <para id="id9742504">
+          <code>end</code>
+        </para>
+        <para id="id8559452">
+          <code/>
+        </para>
+        <para id="id10342105">
+          <code>end</code>
+        </para>
+        <para id="id8911417">
+          <code/>
+        </para>
+        <para id="id9114667">
+          <code>end</code>
+        </para>
+        <para id="id8843230">
+          <code/>
+        </para>
+        <para id="id9049821">
+          <code/>
+        </para>
+        <para id="id9112116">
+          <code>% Plot the interpolated values</code>
+        </para>
+        <para id="id10840728">
+          <code>figure(1)</code>
+        </para>
+        <para id="id8860914">
+          <code>imagesc(abs(val)); </code>
+        </para>
+        <para id="id9041843">
+          <code/>
+        </para>
+        <para id="id10082574">
+          <code>% Take the 2d inverse DFT to get the image</code>
+        </para>
+        <para id="id9741515">
+          <code>img = ifft2(val);</code>
+        </para>
+        <para id="id7681507">
+          <code/>
+        </para>
+        <para id="id10075957">
+          <code>% Plot the image</code>
+        </para>
+        <para id="id10398134">
+          <code>figure(2)</code>
+        </para>
+        <para id="id9733931">
+          <code>imagesc(abs(img));</code>
+        </para>
+        <para id="id9356130">
+          <code/>
+        </para>
+        <para id="id8107446">
+          <code/>
+        </para>
+      </section>
+    </section>
+    <section id="id-865450366814">
+      <title>References</title>
+      <para id="id11135266">
+        <code/>
+      </para>
+      <para id="id10435631">
+        <code/>
+      </para>
+      <para id="id9391844">D. C. Munson Jr., J. D. O’Brien, W. K. Jenkins, “A Tomographic Formulation of Spotlight-Mode Synthetic Aperture Radar,” Proc. IEEE, vol. 71, pp 917-925, August 1983. </para>
+      <para id="id7298160">D. C. Munson Jr., R. L. Visentin, “A Signal Processing View of Strip-Mapping Synthetic Aperture Radar,” IEEE Transactions on Acoustics, Speech, and Signal Processing, vol. 37, no. 12, pp 2131-2147, December 1989. </para>
+      <para id="id8835243">G. D. Martin, A. W. Doerry, “SAR Polar Format Implementation with MATLAB,” Sandia National Laboratories, SAND2005-7413, November 2005. </para>
+      <para id="id9166635">P. Buxa, L. Gorham, Lt. M. Lukacs, “Mapping of a 2D SAR Backprojection Algorithm to an SRC Reconfigurable Computing MAP Processor,” Air Force Research Laboratory, Sensors Directorate.</para>
+      <para id="id8721443">
+        <code/>
+      </para>
+    </section>
+  </content>
+</document>
